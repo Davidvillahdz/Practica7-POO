@@ -4,7 +4,7 @@
  */
 package ec.edu.ups.practica5.vista;
 
-import ec.edu.ups.practica5.vista.compositor.VentanaAgregarCantante;
+import ec.edu.ups.practica5.vista.cantante.VentanaAgregarCantante;
 
 /**
  *
