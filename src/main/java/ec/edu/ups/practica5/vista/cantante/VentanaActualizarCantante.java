@@ -4,27 +4,19 @@
  */
 package ec.edu.ups.practica5.vista.cantante;
 
-import java.util.ResourceBundle;
-
 /**
  *
- * @author Usuario
+ * @author HP
  */
-public class VentanaAgregarCantante extends javax.swing.JInternalFrame {
+public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
 
-    private ResourceBundle mensajes;
     /**
-     * Creates new form VentanaAgregarCantante
+     * Creates new form VentanaActualizarCantante
      */
-    public VentanaAgregarCantante() {
+    public VentanaActualizarCantante() {
         initComponents();
     }
-public void cambiarIdioma(){
-        mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
-        MenuCompositor.setText(mensajes.getString("Menu.Compositor"));
-        MenuCantante.setText(mensajes.getString("Menu.Cantante"));
-        MenuCliente.setText(mensajes.getString("Menu.Cliente"));
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,13 +40,7 @@ public void cambiarIdioma(){
         txtNumeroConciertos = new javax.swing.JTextField();
         txtNumeroGiras = new javax.swing.JTextField();
 
-        setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar Cantante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actualizar Cantante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(153, 153, 153));
 
         jLabel1.setText("Nombre Artistico");
@@ -132,7 +118,7 @@ public void cambiarIdioma(){
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtGeneroMusical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGeneroMusical, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)

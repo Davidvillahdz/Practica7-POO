@@ -5,21 +5,34 @@
 package ec.edu.ups.practica5.vista;
 
 import ec.edu.ups.practica5.vista.cantante.VentanaAgregarCantante;
-
+import java.util.Locale;
+import java.util.ResourceBundle;
 /**
  *
  * @author Usuario
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 private VentanaAgregarCantante ventanaAgregarCantante;
-    /**
-     * Creates new form VentanaPrincipal
-     */
+
+//internacionalizacion
+private Locale localizacion;
+private ResourceBundle mensajes;
+    
     public VentanaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        localizacion = Locale.getDefault();
+        System.out.println(getClass().getPackageName());
+        
+        cambiarIdioma();
     }
 
+    public void cambiarIdioma(){
+        mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
+        MenuCompositor.setText(mensajes.getString("Menu.Compositor"));
+        MenuCantante.setText(mensajes.getString("Menu.Cantante"));
+        MenuCliente.setText(mensajes.getString("Menu.Cliente"));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,7 +42,7 @@ private VentanaAgregarCantante ventanaAgregarCantante;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        desktopPane = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
         MenuCompositor = new javax.swing.JMenu();
         MenuAgregarCompositor = new javax.swing.JMenuItem();
@@ -43,18 +56,22 @@ private VentanaAgregarCantante ventanaAgregarCantante;
         MenuActualizarCantante = new javax.swing.JMenuItem();
         MenuEliminarCantante = new javax.swing.JMenuItem();
         MenuListarCantante = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        MenuCliente = new javax.swing.JMenu();
+        MenuIdiomas = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
+        desktopPane.setLayout(desktopPaneLayout);
+        desktopPaneLayout.setHorizontalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 568, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        desktopPaneLayout.setVerticalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 375, Short.MAX_VALUE)
         );
 
@@ -111,8 +128,36 @@ private VentanaAgregarCantante ventanaAgregarCantante;
 
         jMenuBar2.add(MenuCantante);
 
-        jMenu1.setText("Cliente");
-        jMenuBar2.add(jMenu1);
+        MenuCliente.setText("Cliente");
+        jMenuBar2.add(MenuCliente);
+
+        MenuIdiomas.setText("Idiomas");
+
+        jMenuItem1.setText("Español");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        MenuIdiomas.add(jMenuItem1);
+
+        jMenuItem2.setText("Ingles");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        MenuIdiomas.add(jMenuItem2);
+
+        jMenuItem3.setText("Frances");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        MenuIdiomas.add(jMenuItem3);
+
+        jMenuBar2.add(MenuIdiomas);
 
         setJMenuBar(jMenuBar2);
 
@@ -122,12 +167,12 @@ private VentanaAgregarCantante ventanaAgregarCantante;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jDesktopPane1)
+                .addComponent(desktopPane)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(desktopPane)
         );
 
         pack();
@@ -145,9 +190,26 @@ private VentanaAgregarCantante ventanaAgregarCantante;
         // TODO add your handling code here:
         if(ventanaAgregarCantante == null){
             ventanaAgregarCantante = new VentanaAgregarCantante();
+            desktopPane.add(ventanaAgregarCantante);
             
         }
+        ventanaAgregarCantante.setVisible(true);
     }//GEN-LAST:event_MenuAgregarCompositorActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        localizacion= new Locale("es","EC");
+        cambiarIdioma();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       localizacion= new Locale("en","US");
+        cambiarIdioma();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        localizacion= new Locale("fr","FR");
+        cambiarIdioma();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,13 +254,17 @@ private VentanaAgregarCantante ventanaAgregarCantante;
     private javax.swing.JMenuItem MenuBuscarCantante;
     private javax.swing.JMenuItem MenuBuscarCompositor;
     private javax.swing.JMenu MenuCantante;
+    private javax.swing.JMenu MenuCliente;
     private javax.swing.JMenu MenuCompositor;
     private javax.swing.JMenuItem MenuEliminarCantante;
     private javax.swing.JMenuItem MenuEliminarCompositor;
+    private javax.swing.JMenu MenuIdiomas;
     private javax.swing.JMenuItem MenuListarCantante;
     private javax.swing.JMenuItem MenuListarCompositor;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }

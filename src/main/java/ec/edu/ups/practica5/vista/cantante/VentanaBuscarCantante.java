@@ -4,27 +4,19 @@
  */
 package ec.edu.ups.practica5.vista.cantante;
 
-import java.util.ResourceBundle;
-
 /**
  *
- * @author Usuario
+ * @author HP
  */
-public class VentanaAgregarCantante extends javax.swing.JInternalFrame {
+public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
 
-    private ResourceBundle mensajes;
     /**
-     * Creates new form VentanaAgregarCantante
+     * Creates new form VentanaBuscarCantante
      */
-    public VentanaAgregarCantante() {
+    public VentanaBuscarCantante() {
         initComponents();
     }
-public void cambiarIdioma(){
-        mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
-        MenuCompositor.setText(mensajes.getString("Menu.Compositor"));
-        MenuCantante.setText(mensajes.getString("Menu.Cantante"));
-        MenuCliente.setText(mensajes.getString("Menu.Cliente"));
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,6 +39,7 @@ public void cambiarIdioma(){
         jLabel5 = new javax.swing.JLabel();
         txtNumeroConciertos = new javax.swing.JTextField();
         txtNumeroGiras = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -54,7 +47,7 @@ public void cambiarIdioma(){
         setMaximizable(true);
         setResizable(true);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar Cantante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Cantante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(153, 153, 153));
 
         jLabel1.setText("Nombre Artistico");
@@ -65,6 +58,7 @@ public void cambiarIdioma(){
 
         txtNombreArtistico.setToolTipText("Ingrese el nombre Artitisco");
 
+        txtGeneroMusical.setEditable(false);
         txtGeneroMusical.setToolTipText("Ingrese el genero musical");
         txtGeneroMusical.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +66,7 @@ public void cambiarIdioma(){
             }
         });
 
+        txtNumeroSencillos.setEditable(false);
         txtNumeroSencillos.setToolTipText("Ingrese el numero de sencillos");
 
         btnAceptar.setText("Aceptar");
@@ -82,6 +77,7 @@ public void cambiarIdioma(){
 
         jLabel5.setText("Numero de giras");
 
+        txtNumeroConciertos.setEditable(false);
         txtNumeroConciertos.setToolTipText("Ingrese el numero de conciertos");
         txtNumeroConciertos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +85,10 @@ public void cambiarIdioma(){
             }
         });
 
+        txtNumeroGiras.setEditable(false);
         txtNumeroGiras.setToolTipText("Ingrese el numero de giras");
+
+        jLabel6.setText("Discografia ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,7 +111,8 @@ public void cambiarIdioma(){
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(76, 76, 76)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtNombreArtistico, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
@@ -145,7 +145,9 @@ public void cambiarIdioma(){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(txtNumeroGiras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnAceptar))
@@ -183,6 +185,7 @@ public void cambiarIdioma(){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtGeneroMusical;
     private javax.swing.JTextField txtNombreArtistico;
