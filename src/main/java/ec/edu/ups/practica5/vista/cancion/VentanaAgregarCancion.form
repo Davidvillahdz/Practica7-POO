@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <Properties>
+    <Property name="closable" type="boolean" value="true"/>
+    <Property name="defaultCloseOperation" type="int" value="1"/>
+    <Property name="iconifiable" type="boolean" value="true"/>
+    <Property name="maximizable" type="boolean" value="true"/>
+    <Property name="resizable" type="boolean" value="true"/>
+  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -49,18 +56,16 @@
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel4" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel3" max="32767" attributes="0"/>
-                                  <Component id="jLabel2" max="32767" attributes="0"/>
-                                  <Component id="jLabel1" pref="100" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel3" max="32767" attributes="0"/>
+                              <Component id="jLabel2" max="32767" attributes="0"/>
+                              <Component id="jLabel1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtCodigo" alignment="0" pref="120" max="32767" attributes="0"/>
-                              <Component id="txtTitulo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtLetra" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtTiempoEnMinutos" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtCodigoAgregarCancion" alignment="0" pref="120" max="32767" attributes="0"/>
+                              <Component id="txtTituloAgregarCancion" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtLetraAgregarCancion" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtTiempoEnMinutosAgregarCancion" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -82,22 +87,22 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCodigoAgregarCancion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                              <Component id="txtTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTituloAgregarCancion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txtLetra" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtLetraAgregarCancion" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="txtTiempoEnMinutos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTiempoEnMinutosAgregarCancion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -130,15 +135,24 @@
             <Property name="text" type="java.lang.String" value="Tiempo en minutos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCodigo">
+        <Component class="javax.swing.JTextField" name="txtCodigoAgregarCancion">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese el codigo de la cancion"/>
+          </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTitulo">
+        <Component class="javax.swing.JTextField" name="txtTituloAgregarCancion">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese el titulo de la cancion"/>
+          </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtLetra">
+        <Component class="javax.swing.JTextField" name="txtLetraAgregarCancion">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese la letra de la cancion"/>
+          </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtTiempoEnMinutos">
+        <Component class="javax.swing.JTextField" name="txtTiempoEnMinutosAgregarCancion">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTiempoEnMinutosActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTiempoEnMinutosAgregarCancionActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAceptar">

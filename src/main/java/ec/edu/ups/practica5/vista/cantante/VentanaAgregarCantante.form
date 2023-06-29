@@ -54,145 +54,305 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
-                          <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlSalario1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtNombreArtisticoCantanteCrear" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                          <Component id="jlSalario2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtGeneroMusicalCantanteCrear" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jlSalario3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtSencillosCantanteCrear" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jlSalario4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtConciertosCantanteCrear" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jlSalario5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtGirasCantanteCrear" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jlCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlApellido" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlEdad" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlNacionalidad" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlSalario" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtSalarioCantanteCrear" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="txtNacionalidadCantanteCrear" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="txtEdadCantanteCrear" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="txtApellidoCantanteCrear" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="txtNombreCantanteCrear" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="txtCodigoCantanteCrear" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btnAceptar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="76" pref="76" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtNombreArtistico" alignment="0" pref="150" max="32767" attributes="0"/>
-                              <Component id="txtGeneroMusical" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNumeroSencillos" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNumeroConciertos" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNumeroGiras" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="txtNombreArtistico" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlCodigo" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtCodigoCantanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtGeneroMusical" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlNombre" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtNombreCantanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel3" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="txtNumeroSencillos" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNumeroConciertos" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNumeroGiras" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="40" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlApellido" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtApellidoCantanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlEdad" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtEdadCantanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlNacionalidad" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtNacionalidadCantanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlSalario" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtSalarioCantanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlSalario1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtNombreArtisticoCantanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlSalario2" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtGeneroMusicalCantanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlSalario3" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtSencillosCantanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlSalario4" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtConciertosCantanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlSalario5" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="txtGirasCantanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JTextField" name="txtNombreCantanteCrear">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre Artistico"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Genero Musical"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Numero de sencillos "/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtNombreArtistico">
-          <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Ingrese el nombre Artitisco"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtGeneroMusical">
-          <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Ingrese el genero musical"/>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las cancionesTop100Billboard"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGeneroMusicalActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreCantanteCrearActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtNumeroSencillos">
-          <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Ingrese el numero de sencillos"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnAceptar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Aceptar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAceptarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Numero de conciertos"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Numero de giras"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtNumeroConciertos">
-          <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Ingrese el numero de conciertos"/>
-          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNumeroConciertosActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNumeroGiras">
+        <Component class="javax.swing.JLabel" name="jlCodigo">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Ingrese el numero de giras"/>
+            <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlNombre">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlEdad">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edad"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlApellido">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Apellido"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlNacionalidad">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nacionalidad"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlSalario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Salario"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCodigoCantanteCrear">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las cancionesTop100Billboard"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoCantanteCrearActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtApellidoCantanteCrear">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las cancionesTop100Billboard"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtApellidoCantanteCrearActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEdadCantanteCrear">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las cancionesTop100Billboard"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEdadCantanteCrearActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNacionalidadCantanteCrear">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las cancionesTop100Billboard"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNacionalidadCantanteCrearActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtSalarioCantanteCrear">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las cancionesTop100Billboard"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSalarioCantanteCrearActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlSalario1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre Art&#xed;stico"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlSalario2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Genero Musical"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlSalario3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="N&#xfa;mero de sencillos"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlSalario4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="N&#xfa;mero de conciertos"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jlSalario5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="N&#xfa;mero de giras"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNombreArtisticoCantanteCrear">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las cancionesTop100Billboard"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreArtisticoCantanteCrearActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtGeneroMusicalCantanteCrear">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las cancionesTop100Billboard"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGeneroMusicalCantanteCrearActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtSencillosCantanteCrear">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las cancionesTop100Billboard"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSencillosCantanteCrearActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtConciertosCantanteCrear">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las cancionesTop100Billboard"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtConciertosCantanteCrearActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtGirasCantanteCrear">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ingrese las cancionesTop100Billboard"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtGirasCantanteCrearActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

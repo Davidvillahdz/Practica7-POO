@@ -4,26 +4,39 @@
  */
 package ec.edu.ups.practica5.vista.cantante;
 
+import ec.edu.ups.practica5.controlador.ControladorCantante;
+import ec.edu.ups.practica5.modelo.Cantante;
+import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Usuario
+ * @author HP
  */
 public class VentanaAgregarCantante extends javax.swing.JInternalFrame {
-
     private ResourceBundle mensajes;
+    private ControladorCantante controladorCantante;
     /**
      * Creates new form VentanaAgregarCantante
      */
-    public VentanaAgregarCantante() {
+    public VentanaAgregarCantante(ControladorCantante controladorCantante) {
         initComponents();
+        this.controladorCantante = controladorCantante;
     }
-public void cambiarIdioma(){
+    public void cambiarIdioma(Locale localizacion){
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
-        MenuCompositor.setText(mensajes.getString("Menu.Compositor"));
-        MenuCantante.setText(mensajes.getString("Menu.Cantante"));
-        MenuCliente.setText(mensajes.getString("Menu.Cliente"));
+        jlCodigo.setText(mensajes.getString("txtCodigoCantanteCrear"));
+        jlNombre.setText(mensajes.getString("txtNombreCantanteCrear"));
+        jlApellido.setText(mensajes.getString("txtApellidoCantanteCrear"));
+        jlEdad.setText(mensajes.getString("txtEdadCantanteCrear"));
+        jlNacionalidad.setText(mensajes.getString("txtNacionalidadCantanteCrear"));
+        jlSalario.setText(mensajes.getString("txttxtSalarioCantanteCrear"));
+        jlSalario1.setText(mensajes.getString("txtNombreArtisticoCantanteCrear"));
+        jlSalario2.setText(mensajes.getString("txtGeneroMusicalCantanteCrear"));
+        jlSalario3.setText(mensajes.getString("txtSencillosCantanteCrear"));
+        jlSalario4.setText(mensajes.getString("txtConciertosCantanteCrear"));
+        jlSalario5.setText(mensajes.getString("txtGirasCantanteCrear"));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,18 +48,30 @@ public void cambiarIdioma(){
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtNombreArtistico = new javax.swing.JTextField();
-        txtGeneroMusical = new javax.swing.JTextField();
-        txtNumeroSencillos = new javax.swing.JTextField();
+        txtNombreCantanteCrear = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtNumeroConciertos = new javax.swing.JTextField();
-        txtNumeroGiras = new javax.swing.JTextField();
+        jlCodigo = new javax.swing.JLabel();
+        jlNombre = new javax.swing.JLabel();
+        jlEdad = new javax.swing.JLabel();
+        jlApellido = new javax.swing.JLabel();
+        jlNacionalidad = new javax.swing.JLabel();
+        jlSalario = new javax.swing.JLabel();
+        txtCodigoCantanteCrear = new javax.swing.JTextField();
+        txtApellidoCantanteCrear = new javax.swing.JTextField();
+        txtEdadCantanteCrear = new javax.swing.JTextField();
+        txtNacionalidadCantanteCrear = new javax.swing.JTextField();
+        txtSalarioCantanteCrear = new javax.swing.JTextField();
+        jlSalario1 = new javax.swing.JLabel();
+        jlSalario2 = new javax.swing.JLabel();
+        jlSalario3 = new javax.swing.JLabel();
+        jlSalario4 = new javax.swing.JLabel();
+        jlSalario5 = new javax.swing.JLabel();
+        txtNombreArtisticoCantanteCrear = new javax.swing.JTextField();
+        txtGeneroMusicalCantanteCrear = new javax.swing.JTextField();
+        txtSencillosCantanteCrear = new javax.swing.JTextField();
+        txtConciertosCantanteCrear = new javax.swing.JTextField();
+        txtGirasCantanteCrear = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -57,99 +82,234 @@ public void cambiarIdioma(){
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar Cantante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel1.setText("Nombre Artistico");
-
-        jLabel2.setText("Genero Musical");
-
-        jLabel3.setText("Numero de sencillos ");
-
-        txtNombreArtistico.setToolTipText("Ingrese el nombre Artitisco");
-
-        txtGeneroMusical.setToolTipText("Ingrese el genero musical");
-        txtGeneroMusical.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreCantanteCrear.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtNombreCantanteCrear.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtNombreCantanteCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGeneroMusicalActionPerformed(evt);
+                txtNombreCantanteCrearActionPerformed(evt);
             }
         });
-
-        txtNumeroSencillos.setToolTipText("Ingrese el numero de sencillos");
 
         btnAceptar.setText("Aceptar");
-
-        btnCancelar.setText("Cancelar");
-
-        jLabel4.setText("Numero de conciertos");
-
-        jLabel5.setText("Numero de giras");
-
-        txtNumeroConciertos.setToolTipText("Ingrese el numero de conciertos");
-        txtNumeroConciertos.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroConciertosActionPerformed(evt);
+                btnAceptarActionPerformed(evt);
             }
         });
 
-        txtNumeroGiras.setToolTipText("Ingrese el numero de giras");
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        jlCodigo.setText("Código");
+
+        jlNombre.setText("Nombre");
+
+        jlEdad.setText("Edad");
+
+        jlApellido.setText("Apellido");
+
+        jlNacionalidad.setText("Nacionalidad");
+
+        jlSalario.setText("Salario");
+
+        txtCodigoCantanteCrear.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtCodigoCantanteCrear.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtCodigoCantanteCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoCantanteCrearActionPerformed(evt);
+            }
+        });
+
+        txtApellidoCantanteCrear.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtApellidoCantanteCrear.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtApellidoCantanteCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoCantanteCrearActionPerformed(evt);
+            }
+        });
+
+        txtEdadCantanteCrear.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtEdadCantanteCrear.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtEdadCantanteCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEdadCantanteCrearActionPerformed(evt);
+            }
+        });
+
+        txtNacionalidadCantanteCrear.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtNacionalidadCantanteCrear.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtNacionalidadCantanteCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNacionalidadCantanteCrearActionPerformed(evt);
+            }
+        });
+
+        txtSalarioCantanteCrear.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtSalarioCantanteCrear.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtSalarioCantanteCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalarioCantanteCrearActionPerformed(evt);
+            }
+        });
+
+        jlSalario1.setText("Nombre Artístico");
+
+        jlSalario2.setText("Genero Musical");
+
+        jlSalario3.setText("Número de sencillos");
+
+        jlSalario4.setText("Número de conciertos");
+
+        jlSalario5.setText("Número de giras");
+
+        txtNombreArtisticoCantanteCrear.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtNombreArtisticoCantanteCrear.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtNombreArtisticoCantanteCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreArtisticoCantanteCrearActionPerformed(evt);
+            }
+        });
+
+        txtGeneroMusicalCantanteCrear.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtGeneroMusicalCantanteCrear.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtGeneroMusicalCantanteCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGeneroMusicalCantanteCrearActionPerformed(evt);
+            }
+        });
+
+        txtSencillosCantanteCrear.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtSencillosCantanteCrear.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtSencillosCantanteCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSencillosCantanteCrearActionPerformed(evt);
+            }
+        });
+
+        txtConciertosCantanteCrear.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtConciertosCantanteCrear.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtConciertosCantanteCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConciertosCantanteCrearActionPerformed(evt);
+            }
+        });
+
+        txtGirasCantanteCrear.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtGirasCantanteCrear.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtGirasCantanteCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGirasCantanteCrearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(btnAceptar)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnCancelar))
+                        .addComponent(jlSalario1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtNombreArtisticoCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
+                        .addComponent(jlSalario2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtGeneroMusicalCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jlSalario3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtSencillosCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jlSalario4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtConciertosCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jlSalario5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtGirasCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(76, 76, 76)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombreArtistico, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(txtGeneroMusical)
-                            .addComponent(txtNumeroSencillos)
-                            .addComponent(txtNumeroConciertos)
-                            .addComponent(txtNumeroGiras))))
-                .addGap(138, 138, 138))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlCodigo)
+                                    .addComponent(jlNombre)
+                                    .addComponent(jlApellido)
+                                    .addComponent(jlEdad)
+                                    .addComponent(jlNacionalidad)
+                                    .addComponent(jlSalario))
+                                .addGap(114, 114, 114)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSalarioCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNacionalidadCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEdadCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtApellidoCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNombreCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCodigoCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnAceptar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCancelar)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombreArtistico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jlCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigoCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtGeneroMusical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumeroSencillos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtNumeroConciertos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(txtNumeroGiras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                    .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnAceptar))
-                .addGap(19, 19, 19))
+                    .addComponent(jlApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellidoCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEdadCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNacionalidadCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSalarioCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlSalario1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreArtisticoCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlSalario2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGeneroMusicalCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlSalario3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSencillosCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlSalario4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtConciertosCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlSalario5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGirasCantanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAceptar)
+                    .addComponent(btnCancelar))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,28 +326,121 @@ public void cambiarIdioma(){
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtGeneroMusicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroMusicalActionPerformed
+    private void txtNombreCantanteCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreCantanteCrearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtGeneroMusicalActionPerformed
+    }//GEN-LAST:event_txtNombreCantanteCrearActionPerformed
 
-    private void txtNumeroConciertosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroConciertosActionPerformed
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNumeroConciertosActionPerformed
+        int codigo = Integer.parseInt(txtCodigoCantanteCrear.getText());
+        String nombre = txtNombreCantanteCrear.getText();
+        String apellido = txtApellidoCantanteCrear.getText();
+        int edad = Integer.parseInt(txtEdadCantanteCrear.getText());
+        String nacionalidad = txtNacionalidadCantanteCrear.getText();
+        double salario = Double.parseDouble(txtSalarioCantanteCrear.getText());
+        String nombreArtistico = txtNombreArtisticoCantanteCrear.getText();
+        String generoMusical = txtGeneroMusicalCantanteCrear.getText();
+        int numeroDeSencillos = Integer.parseInt(txtSencillosCantanteCrear.getText());
+        int numeroDeConciertos = Integer.parseInt(txtConciertosCantanteCrear.getText());
+        int numeroDeGiras = Integer.parseInt(txtGirasCantanteCrear.getText());
 
+        Cantante cantante = new Cantante();
 
+        cantante.setCodigo(codigo);
+        cantante.setNombre(nombre);
+        cantante.setApellido(apellido);
+        cantante.setEdad(edad);
+        cantante.setNacionalidad(nacionalidad);
+        cantante.setSalario(salario);
+        cantante.setNombreArtistico(nombreArtistico);
+        cantante.setGeneroMusical(generoMusical);
+        cantante.setNumeroDeSencillos(numeroDeSencillos);
+        cantante.setNumeroDeConciertos(numeroDeConciertos);
+        cantante.setNumeroDeGiras(numeroDeGiras);
+
+        controladorCantante.crearCantante(cantante);
+
+        JOptionPane.showMessageDialog(this, "Cantante agregado exitosamente.");
+        limpiarCampos();
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtCodigoCantanteCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoCantanteCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoCantanteCrearActionPerformed
+
+    private void txtApellidoCantanteCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoCantanteCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoCantanteCrearActionPerformed
+
+    private void txtEdadCantanteCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadCantanteCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadCantanteCrearActionPerformed
+
+    private void txtNacionalidadCantanteCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacionalidadCantanteCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNacionalidadCantanteCrearActionPerformed
+
+    private void txtSalarioCantanteCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioCantanteCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalarioCantanteCrearActionPerformed
+
+    private void txtNombreArtisticoCantanteCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreArtisticoCantanteCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreArtisticoCantanteCrearActionPerformed
+
+    private void txtGeneroMusicalCantanteCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroMusicalCantanteCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGeneroMusicalCantanteCrearActionPerformed
+
+    private void txtSencillosCantanteCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSencillosCantanteCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSencillosCantanteCrearActionPerformed
+
+    private void txtConciertosCantanteCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConciertosCantanteCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConciertosCantanteCrearActionPerformed
+
+    private void txtGirasCantanteCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGirasCantanteCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGirasCantanteCrearActionPerformed
+
+    public void limpiarCampos() {
+        txtCodigoCantanteCrear.setText("");
+        txtNombreCantanteCrear.setText("");
+        txtApellidoCantanteCrear.setText("");
+        txtEdadCantanteCrear.setText("");
+        txtNacionalidadCantanteCrear.setText("");
+        txtSalarioCantanteCrear.setText("");
+ }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtGeneroMusical;
-    private javax.swing.JTextField txtNombreArtistico;
-    private javax.swing.JTextField txtNumeroConciertos;
-    private javax.swing.JTextField txtNumeroGiras;
-    private javax.swing.JTextField txtNumeroSencillos;
+    private javax.swing.JLabel jlApellido;
+    private javax.swing.JLabel jlCodigo;
+    private javax.swing.JLabel jlEdad;
+    private javax.swing.JLabel jlNacionalidad;
+    private javax.swing.JLabel jlNombre;
+    private javax.swing.JLabel jlSalario;
+    private javax.swing.JLabel jlSalario1;
+    private javax.swing.JLabel jlSalario2;
+    private javax.swing.JLabel jlSalario3;
+    private javax.swing.JLabel jlSalario4;
+    private javax.swing.JLabel jlSalario5;
+    private javax.swing.JTextField txtApellidoCantanteCrear;
+    private javax.swing.JTextField txtCodigoCantanteCrear;
+    private javax.swing.JTextField txtConciertosCantanteCrear;
+    private javax.swing.JTextField txtEdadCantanteCrear;
+    private javax.swing.JTextField txtGeneroMusicalCantanteCrear;
+    private javax.swing.JTextField txtGirasCantanteCrear;
+    private javax.swing.JTextField txtNacionalidadCantanteCrear;
+    private javax.swing.JTextField txtNombreArtisticoCantanteCrear;
+    private javax.swing.JTextField txtNombreCantanteCrear;
+    private javax.swing.JTextField txtSalarioCantanteCrear;
+    private javax.swing.JTextField txtSencillosCantanteCrear;
     // End of variables declaration//GEN-END:variables
 }

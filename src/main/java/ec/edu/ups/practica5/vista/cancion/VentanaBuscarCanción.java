@@ -4,19 +4,28 @@
  */
 package ec.edu.ups.practica5.vista.cancion;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 /**
  *
  * @author Usuario
  */
 public class VentanaBuscarCanción extends javax.swing.JInternalFrame {
-
+    private ResourceBundle mensajes;
     /**
      * Creates new form VentanaBuscarCanción
      */
     public VentanaBuscarCanción() {
         initComponents();
     }
-
+    public void cambiarIdioma(Locale localizacion){
+        mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
+        jLabel1.setText(mensajes.getString("txtCodigoBuscarCancion"));
+        jLabel2.setText(mensajes.getString("txtTituloBuscarCancion"));
+        jLabel3.setText(mensajes.getString("txtLetraBuscarCancion"));
+        jLabel4.setText(mensajes.getString("txtTiempoEnMinutosBuscarCancion"));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,13 +40,19 @@ public class VentanaBuscarCanción extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
-        txtTitulo = new javax.swing.JTextField();
-        txtLetra = new javax.swing.JTextField();
-        txtTiempoEnMinutos = new javax.swing.JTextField();
+        txtCodigoBuscarCancion = new javax.swing.JTextField();
+        txtTituloBuscarCancion = new javax.swing.JTextField();
+        txtLetraBuscarCancion = new javax.swing.JTextField();
+        txtTiempoEnMinutosBuscarCancion = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Cancion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
@@ -49,9 +64,9 @@ public class VentanaBuscarCanción extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Tiempo en minutos");
 
-        txtTiempoEnMinutos.addActionListener(new java.awt.event.ActionListener() {
+        txtTiempoEnMinutosBuscarCancion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTiempoEnMinutosActionPerformed(evt);
+                txtTiempoEnMinutosBuscarCancionActionPerformed(evt);
             }
         });
 
@@ -76,10 +91,10 @@ public class VentanaBuscarCanción extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(txtTitulo)
-                            .addComponent(txtLetra)
-                            .addComponent(txtTiempoEnMinutos))
+                            .addComponent(txtCodigoBuscarCancion, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(txtTituloBuscarCancion)
+                            .addComponent(txtLetraBuscarCancion)
+                            .addComponent(txtTiempoEnMinutosBuscarCancion))
                         .addGap(39, 39, 39)
                         .addComponent(btnBuscar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -97,19 +112,19 @@ public class VentanaBuscarCanción extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigoBuscarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTituloBuscarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtLetra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLetraBuscarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTiempoEnMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTiempoEnMinutosBuscarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(84, 84, 84)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
@@ -133,9 +148,9 @@ public class VentanaBuscarCanción extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTiempoEnMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTiempoEnMinutosActionPerformed
+    private void txtTiempoEnMinutosBuscarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTiempoEnMinutosBuscarCancionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTiempoEnMinutosActionPerformed
+    }//GEN-LAST:event_txtTiempoEnMinutosBuscarCancionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -147,9 +162,9 @@ public class VentanaBuscarCanción extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtLetra;
-    private javax.swing.JTextField txtTiempoEnMinutos;
-    private javax.swing.JTextField txtTitulo;
+    private javax.swing.JTextField txtCodigoBuscarCancion;
+    private javax.swing.JTextField txtLetraBuscarCancion;
+    private javax.swing.JTextField txtTiempoEnMinutosBuscarCancion;
+    private javax.swing.JTextField txtTituloBuscarCancion;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,6 +19,9 @@ public class ControladorCompositor {
 
     private ICompositorDAO compositorDAO;
 
+    public ControladorCompositor() {
+    }
+
     public ControladorCompositor(Compositor compositor, Cancion cancion, ICompositorDAO compositorDAO) {
         this.compositor = compositor;
         this.cancion = cancion;

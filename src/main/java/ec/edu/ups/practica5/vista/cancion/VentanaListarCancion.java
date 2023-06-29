@@ -2,35 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package ec.edu.ups.practica5.vista.compositor;
+package ec.edu.ups.practica5.vista.cancion;
 
-import ec.edu.ups.practica5.controlador.ControladorCompositor;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
 /**
  *
  * @author Usuario
  */
-public class VentanaListarCompositor extends javax.swing.JInternalFrame {
-    private ControladorCompositor controladorCompositor;
+public class VentanaListarCancion extends javax.swing.JInternalFrame {
     private ResourceBundle mensajes;
     /**
-     * Creates new form VentanaListarCompositor
+     * Creates new form VentanaListarCancion
      */
-    public VentanaListarCompositor(ControladorCompositor controladorCompositor) {
+    public VentanaListarCancion() {
         initComponents();
     }
     public void cambiarIdioma(Locale localizacion){
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
-        tblCompositor.getColumnModel().getColumn(0).setHeaderValue(mensajes.getString("txtCodigo"));
-        tblCompositor.getColumnModel().getColumn(1).setHeaderValue(mensajes.getString("txtNombre"));
-        tblCompositor.getColumnModel().getColumn(2).setHeaderValue(mensajes.getString("txtApellido"));
-        tblCompositor.getColumnModel().getColumn(3).setHeaderValue(mensajes.getString("txtEdad"));
-        tblCompositor.getColumnModel().getColumn(4).setHeaderValue(mensajes.getString("txtNacionalidad"));
-        tblCompositor.getColumnModel().getColumn(5).setHeaderValue(mensajes.getString("txtSalario"));
-        tblCompositor.getColumnModel().getColumn(6).setHeaderValue(mensajes.getString("txtNumeroComposiciones"));
+        tblCancion.getColumnModel().getColumn(0).setHeaderValue(mensajes.getString("Codigo"));
+        tblCancion.getColumnModel().getColumn(1).setHeaderValue(mensajes.getString("Titulo"));
+        tblCancion.getColumnModel().getColumn(2).setHeaderValue(mensajes.getString("Letra"));
+        tblCancion.getColumnModel().getColumn(3).setHeaderValue(mensajes.getString("Tiempo en minutos"));
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,40 +39,38 @@ public class VentanaListarCompositor extends javax.swing.JInternalFrame {
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblCompositor = new javax.swing.JTable();
+        tblCancion = new javax.swing.JTable();
 
-        setBorder(null);
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Listar Compositor");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listar Compositor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listar Cancion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(153, 153, 153));
 
         btnAceptar.setText("Aceptar");
 
         btnCancelar.setText("Cancelar");
 
-        tblCompositor.setModel(new javax.swing.table.DefaultTableModel(
+        tblCancion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Nombre", "Apellido", "Edad", "Nacionalidad", "Salario", "Numero de composiciones"
+                "Codigo", "Titulo", "Letra", "Tiempo en minutos"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblCompositor);
+        jScrollPane2.setViewportView(tblCancion);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,7 +81,7 @@ public class VentanaListarCompositor extends javax.swing.JInternalFrame {
                 .addComponent(btnAceptar)
                 .addGap(41, 41, 41)
                 .addComponent(btnCancelar)
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addContainerGap(311, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -132,6 +125,6 @@ public class VentanaListarCompositor extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblCompositor;
+    private javax.swing.JTable tblCancion;
     // End of variables declaration//GEN-END:variables
 }

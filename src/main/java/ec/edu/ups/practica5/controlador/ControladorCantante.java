@@ -14,12 +14,12 @@ import java.util.List;
  * @author HP
  */
 public class ControladorCantante {
-    private Cantante cantante;
+   private Cantante cantante;
     private Disco disco;
 
     private ICantanteDAO cantanteDAO;
 
-    public ControladorCantante() {
+     public ControladorCantante() {
     }
 
     public ControladorCantante(Cantante cantante, Disco disco, ICantanteDAO cantanteDAO) {
@@ -29,7 +29,7 @@ public class ControladorCantante {
     }
 
     //llama al DAO para guardar un cliente
-    public void registrar() {
+    public void crearCantante(Cantante cantante) {
         cantanteDAO.create(cantante);
     }
 
@@ -76,4 +76,5 @@ public class ControladorCantante {
         cantante.agregarDisco(disco);
         return cantante;
     }
+
 }
