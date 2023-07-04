@@ -6,6 +6,7 @@ package ec.edu.ups.practica5.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -78,6 +79,36 @@ public class Cantante extends Persona {
         this.numeroDeGiras = numeroDeGiras;
     }
 
+    public List<Disco> getDiscografia() {
+        return discografia;
+    }
+
+    public void setDiscografia(List<Disco> discografia) {
+        this.discografia = discografia;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.nombreArtistico);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cantante other = (Cantante) obj;
+        return Objects.equals(this.nombreArtistico, other.nombreArtistico);
+    }
+
     //Metodos
     @Override
     public double calcularSalario() {
@@ -103,40 +134,55 @@ public class Cantante extends Persona {
 
     }
 
-    public void agregarDisco(Disco disco) {
-        discografia.add(disco);
-
+    public void agregarDisco(Disco discografia1) {
+        discografia.add(discografia1);
     }
 
-    public void actualizarDisco(Disco disco) {
-        if (discografia.contains(disco)) {
-            int index = discografia.indexOf(disco);
-            discografia.set(index, disco);
+    public Disco buscarDisco(int codigo) {
+        for (Disco disco : discografia) {
+            if (disco.getCodigo() == codigo) {
+                return disco;
+            }
         }
+        return null;
     }
 
-    public void eliminarDisco(Disco disco) {
-        if (discografia.contains(disco)) {
-            int index = discografia.indexOf(disco);
-            discografia.remove(index);
-        }
-    }
-
-    public List<Disco> listar() {
+    public List<Disco> listarDiscos() {
         return discografia;
     }
 
-    public Disco buscar(int id) {
-        return discografia.get(id);
+    public void actualizarDisco(Disco discoActualizado) {
+        for (Disco disco : discografia) {
+            if (disco.getCodigo() == discoActualizado.getCodigo()) {
+                disco.setNombre(discoActualizado.getNombre());
+                disco.setAnioDelanzamiento(discoActualizado.getAnioDelanzamiento());
+                System.out.println("Disco actualizado correctamente.");
+                return;
+            }
+        }
+        System.out.println("El disco no se encontró en la lista.");
+    }
 
+    public void eliminarDisco(int codigoDisco) {
+        Disco discoAEliminar = null;
+        for (Disco disco : discografia) {
+            if (disco.getCodigo() == codigoDisco) {
+                discoAEliminar = disco;
+                break;
+            }
+        }
+
+        if (discoAEliminar != null) {
+            discografia.remove(discoAEliminar);
+            System.out.println("Disco eliminado correctamente.");
+        } else {
+            System.out.println("El disco con el código especificado no se encontró en la discografía.");
+        }
     }
 
     public List<Disco> buscarNombreDeCancion(String titulo) {
         return discografia.stream().filter(e -> e.getNombre().startsWith(titulo)).collect(Collectors.toList());
     }
-
-    
-
 
     @Override
     public String toString() {

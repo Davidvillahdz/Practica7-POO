@@ -6,6 +6,7 @@ package ec.edu.ups.practica5.controlador;
 
 import ec.edu.ups.practica5.idao.ICompositorDAO;
 import ec.edu.ups.practica5.modelo.Cancion;
+import ec.edu.ups.practica5.modelo.Cantante;
 import ec.edu.ups.practica5.modelo.Compositor;
 import java.util.List;
 
@@ -19,36 +20,37 @@ public class ControladorCompositor {
 
     private ICompositorDAO compositorDAO;
 
-    public ControladorCompositor() {
-    }
-
-    public ControladorCompositor(Compositor compositor, Cancion cancion, ICompositorDAO compositorDAO) {
-        this.compositor = compositor;
-        this.cancion = cancion;
+    public ControladorCompositor(ICompositorDAO compositorDAO) {
         this.compositorDAO = compositorDAO;
     }
 
-    //llama al DAO para guardar un cliente
-    public void registrar() {
+    public void crearCompositor(Compositor compositor) {
+        this.compositor = compositor;
         compositorDAO.create(compositor);
     }
 
-    //llama al DAO para obtener un cliente por el id y luego los muestra en la vista
-    public void verCantante(int codigo) {
+    public void verCompositor(int codigo) {
         compositor = compositorDAO.read(codigo);
     }
 
-    //llama al DAO para actualizar un cliente
-    public void actualizar() {
+    public void actualizarCompositor() {
         compositorDAO.update(compositor);
     }
-
-    //llama al DAO para eliminar un cliente
-    public void eliminar() {
-        compositorDAO.delete(compositor);
+    
+    public Compositor buscarCompositor(int codigo) {
+        this.compositor = compositorDAO.read(codigo);
+        return compositor;
+    }
+    
+    public boolean eliminarCompositor( Compositor compositor ) {
+        Compositor compositorEncontrado = this.buscarCompositor(compositor.getCodigo());
+        if (compositorEncontrado != null) {
+            compositorDAO.delete(compositorEncontrado);
+            return true;
+        }
+        return false;
     }
 
-    //llama al DAO para obtener todos los clientes y luego los muestra en la vista
     public List<Compositor> verCompositores() {
         return compositorDAO.findAll();
 
@@ -59,5 +61,23 @@ public class ControladorCompositor {
         compositor = compositorDAO.read(codigo);
         compositor.agregarCancion(cancion);
     }
-
+    public void agregarClienteCan(Compositor compositor, Cantante cantante){
+        compositor.agregarCliente(cantante);
+    }
+    
+    public void actualizarCancion(Compositor compositor,Cancion cancion){
+        compositor.actualizarCancion(cancion);
+    }
+    
+    public void agregarCancion(Cancion cancion,Compositor compositor){
+        compositor.agregarCancion(cancion);
+    }
+    
+    public Cancion buscarCancion(Compositor compositor,int codigo){
+        return compositor.buscarCanciones(codigo);
+    }
+    
+    public void eliminarCancion(Compositor compositor, int codigo){
+        compositor.eliminarCancion(codigo);
+    }
 }

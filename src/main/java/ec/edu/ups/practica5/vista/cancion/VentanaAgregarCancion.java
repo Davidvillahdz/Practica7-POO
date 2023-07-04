@@ -4,8 +4,14 @@
  */
 package ec.edu.ups.practica5.vista.cancion;
 
+import ec.edu.ups.practica5.controlador.ControladorCompositor;
+import ec.edu.ups.practica5.modelo.Cancion;
+import ec.edu.ups.practica5.modelo.Compositor;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,18 +19,20 @@ import java.util.ResourceBundle;
  */
 public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
     private ResourceBundle mensajes;
+    private ControladorCompositor controladorCompositor;
     /**
      * Creates new form VentanaAgregarCancion
      */
-    public VentanaAgregarCancion() {
+    public VentanaAgregarCancion(ControladorCompositor controladorCompositor) {
         initComponents();
+        this.controladorCompositor = controladorCompositor;
     }
     public void cambiarIdioma(Locale localizacion){
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
-        jLabel1.setText(mensajes.getString("txtCodigoAgregarCancion"));
-        jLabel2.setText(mensajes.getString("txtTituloAgregarCancion"));
-        jLabel3.setText(mensajes.getString("txtLetraAgregarCancion"));
-        jLabel4.setText(mensajes.getString("txtTiempoEnMinutosAgregarCancion"));
+        jLabel1.setText(mensajes.getString("txtCodigo"));
+        jLabel2.setText(mensajes.getString("txtTituloCA"));
+        jLabel3.setText(mensajes.getString("txtLetraCA"));
+        jLabel4.setText(mensajes.getString("txtTiempoEnMinutosCA"));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,10 +48,10 @@ public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCodigoAgregarCancion = new javax.swing.JTextField();
-        txtTituloAgregarCancion = new javax.swing.JTextField();
-        txtLetraAgregarCancion = new javax.swing.JTextField();
-        txtTiempoEnMinutosAgregarCancion = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
+        txtTitulo = new javax.swing.JTextField();
+        txtLetra = new javax.swing.JTextField();
+        txtTiempoEnMinutos = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
@@ -63,19 +71,24 @@ public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Tiempo en minutos");
 
-        txtCodigoAgregarCancion.setToolTipText("Ingrese el codigo de la cancion");
+        txtCodigo.setToolTipText("Ingrese el codigo de la cancion");
 
-        txtTituloAgregarCancion.setToolTipText("Ingrese el titulo de la cancion");
+        txtTitulo.setToolTipText("Ingrese el titulo de la cancion");
 
-        txtLetraAgregarCancion.setToolTipText("Ingrese la letra de la cancion");
+        txtLetra.setToolTipText("Ingrese la letra de la cancion");
 
-        txtTiempoEnMinutosAgregarCancion.addActionListener(new java.awt.event.ActionListener() {
+        txtTiempoEnMinutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTiempoEnMinutosAgregarCancionActionPerformed(evt);
+                txtTiempoEnMinutosActionPerformed(evt);
             }
         });
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
 
@@ -84,26 +97,23 @@ public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAceptar)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCodigoAgregarCancion, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(txtTituloAgregarCancion)
-                            .addComponent(txtLetraAgregarCancion)
-                            .addComponent(txtTiempoEnMinutosAgregarCancion)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(btnAceptar)
-                        .addGap(39, 39, 39)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(271, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                        .addComponent(txtTitulo)
+                        .addComponent(txtLetra)
+                        .addComponent(txtTiempoEnMinutos))
+                    .addComponent(btnCancelar))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,23 +123,23 @@ public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigoAgregarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTituloAgregarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtLetraAgregarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLetra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTiempoEnMinutosAgregarCancion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84)
+                    .addComponent(txtTiempoEnMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(btnCancelar))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,11 +156,44 @@ public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTiempoEnMinutosAgregarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTiempoEnMinutosAgregarCancionActionPerformed
+    private void txtTiempoEnMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTiempoEnMinutosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTiempoEnMinutosAgregarCancionActionPerformed
+    }//GEN-LAST:event_txtTiempoEnMinutosActionPerformed
 
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        if (this.validacionDeCampos()) {
+            int codigo = Integer.parseInt(txtCodigo.getText());
+            if (ControladorCompositor.buscarCancion(codigo) == null) {
+                String titulo = txtTitulo.getText();
+                String letra = txtLetra.getText();
+                double tiempo = Double.parseDouble(txtTiempoEnMinutos.getText());
 
+                Cancion cancion = new Cancion(codigo, titulo, letra, tiempo);
+                controladorCompositor.agregarCancion(cancion, codigo);
+                System.out.println(ControladorCompositor.verCompositores());
+                JOptionPane.showMessageDialog(this, "Se agrego exitosamente la cancion");
+                this.limpiarCamposCancion();
+            } else {
+                JOptionPane.showMessageDialog(this, "El Codigo de la Cancion ya existe");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No estan llenos todos los campos");
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+     private void limpiarCamposCancion() {
+        txtCodigo.setText("");
+        txtTiempoEnMinutos.setText("");
+        txtLetra.setText("");
+        txtTitulo.setText("");
+    }
+
+    private boolean validacionDeCampos() {
+        if (txtCodigo.getText().isEmpty() || txtTiempoEnMinutos.getText().isEmpty() || txtLetra.getText().isEmpty() || txtTitulo.getText().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
@@ -159,9 +202,9 @@ public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtCodigoAgregarCancion;
-    private javax.swing.JTextField txtLetraAgregarCancion;
-    private javax.swing.JTextField txtTiempoEnMinutosAgregarCancion;
-    private javax.swing.JTextField txtTituloAgregarCancion;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtLetra;
+    private javax.swing.JTextField txtTiempoEnMinutos;
+    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }

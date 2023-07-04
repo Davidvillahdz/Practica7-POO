@@ -6,21 +6,25 @@ package ec.edu.ups.practica5.vista.cantante;
 
 
 import ec.edu.ups.practica5.controlador.ControladorCompositor;
+import ec.edu.ups.practica5.modelo.Compositor;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Usuario
  */
 public class VentanaListarCantante extends javax.swing.JInternalFrame {
+    private ControladorCompositor controladorCompositor;
     private ResourceBundle mensajes;
     /**
      * Creates new form VentanaListarCompositor
      */
     public VentanaListarCantante(ControladorCompositor controladorCompositor) {
         initComponents();
-        
+        this.controladorCompositor = controladorCompositor;
     }
     public void cambiarIdioma(Locale localizacion){
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
@@ -46,7 +50,6 @@ public class VentanaListarCantante extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCantante = new javax.swing.JTable();
@@ -57,13 +60,33 @@ public class VentanaListarCantante extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Listar Cantantes");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listar Cantante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(153, 153, 153));
 
-        btnAceptar.setText("Aceptar");
-
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         tblCantante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,9 +111,7 @@ public class VentanaListarCantante extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(222, 222, 222)
-                .addComponent(btnAceptar)
-                .addGap(41, 41, 41)
+                .addGap(335, 335, 335)
                 .addComponent(btnCancelar)
                 .addContainerGap(482, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,9 +124,7 @@ public class VentanaListarCantante extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(433, 433, 433)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnAceptar))
+                .addComponent(btnCancelar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -130,8 +149,32 @@ public class VentanaListarCantante extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        this.cargarDatosTabla();
+    }//GEN-LAST:event_formInternalFrameActivated
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.setEnabled(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void cargarDatosTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) this.tblCantante.getModel();
+        modelo.setNumRows(0);
+        List<Compositor> listaCompositores = controladorCompositor.verCompositores();
+        for (Compositor compositor : listaCompositores) {
+            int codigo = compositor.getCodigo();
+            String nombre = compositor.getNombre();
+            String apellido = compositor.getApellido();
+            int edad = compositor.getEdad();
+            String nacionalidad = compositor.getNacionalidad();
+            Double salario = compositor.getSalario();
+            int numeroDeComposiciones = compositor.getNumeroDeComposiciones();
+            Object[] rowData = {codigo, nombre, apellido, edad, nacionalidad, salario, numeroDeComposiciones};
+            modelo.addRow(rowData);
+        }
+        this.tblCantante.setModel(modelo);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

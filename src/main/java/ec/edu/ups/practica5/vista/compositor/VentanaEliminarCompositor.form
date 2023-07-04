@@ -19,7 +19,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -79,12 +79,12 @@
                       <Component id="txtNombre" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       <Component id="txtApellido" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       <Component id="txtEdad" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                      <Component id="txtNacionalidad" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       <Component id="txtSalario" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       <Component id="txtNumeroComposiciones" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       <Component id="btnCancelar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbxNacionalidad" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="121" max="32767" attributes="0"/>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -114,12 +114,12 @@
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtEdad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbxNacionalidad" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtSalario" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -154,16 +154,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Aceptar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAceptarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -197,8 +206,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtSalario">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNacionalidad">
-        </Component>
         <Component class="javax.swing.JTextField" name="txtEdad">
         </Component>
         <Component class="javax.swing.JTextField" name="txtApellido">
@@ -206,6 +213,28 @@
         <Component class="javax.swing.JTextField" name="txtNombre">
         </Component>
         <Component class="javax.swing.JTextField" name="txtCodigo">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cbxNacionalidad">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="11">
+                <StringItem index="0" value="--Seleccione una nacionalidad--"/>
+                <StringItem index="1" value="Argentina"/>
+                <StringItem index="2" value="Inglesa"/>
+                <StringItem index="3" value="Colombiana"/>
+                <StringItem index="4" value="Cubana "/>
+                <StringItem index="5" value="Chilena"/>
+                <StringItem index="6" value="Ecuatoriana"/>
+                <StringItem index="7" value="Mexicana"/>
+                <StringItem index="8" value="Peruana"/>
+                <StringItem index="9" value="Americana"/>
+                <StringItem index="10" value="Espa&#xf1;ola"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

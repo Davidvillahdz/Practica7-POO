@@ -14,7 +14,8 @@ import java.util.List;
  * @author HP
  */
 public class ControladorCantante {
-   private Cantante cantante;
+
+    private Cantante cantante;
     private Disco disco;
 
     private ICantanteDAO cantanteDAO;
@@ -41,7 +42,7 @@ public class ControladorCantante {
 
     //llama al DAO para actualizar un cliente
     public boolean actualizar(Cantante cantante) {
-        Cantante cantanteEncontrado = this.buscar(cantante.getCodigo());
+        Cantante cantanteEncontrado = this.buscarCantante(cantante.getCodigo());
         if (cantanteEncontrado != null) {
             cantanteDAO.update(cantanteEncontrado);
             return true;
@@ -51,8 +52,8 @@ public class ControladorCantante {
     }
 
     //llama al DAO para eliminar un cliente
-    public boolean eliminar() {
-        Cantante cantanteEncontrado = this.buscar(cantante.getCodigo());
+    public boolean eliminarCantante(Cantante cantante) {
+        Cantante cantanteEncontrado = this.buscarCantante(cantante.getCodigo());
         if (cantanteEncontrado != null) {
             cantanteDAO.delete(cantanteEncontrado);
             return true;
@@ -65,16 +66,23 @@ public class ControladorCantante {
         return cantanteDAO.findAll();
     }
 
-    //ejemplo de agregacion
-    public void agregarDisco(int codigo) {
-        cantante = cantanteDAO.read(codigo);
-        cantante.agregarDisco(disco);
+    public Cantante buscarCantante(int codigo) {
+        return cantanteDAO.read(codigo);
     }
 
-    private Cantante buscar(int codigo) {
-        cantante = cantanteDAO.read(codigo);
-        cantante.agregarDisco(disco);
-        return cantante;
+ public void eliminarDisco(Cantante cantante,int codigo){
+        List<Disco> listarDiscos=cantante.getDiscografia();
+        for (Disco listaDisco : listarDiscos) {
+            if (listaDisco.getCodigo()==codigo) {
+                cantante.eliminarDisco(codigo);
+                cantanteDAO.update(cantante);
+            }
+        }
+    }
+    
+    public void actualizarDisco(Cantante cantante,Disco disco){
+        cantante.actualizarDisco(disco);
+        cantanteDAO.update(cantante); 
     }
 
 }

@@ -4,34 +4,40 @@
  */
 package ec.edu.ups.practica5.vista.cantante;
 
+import ec.edu.ups.practica5.controlador.ControladorCantante;
+import ec.edu.ups.practica5.modelo.Cantante;
+import ec.edu.ups.practica5.modelo.Compositor;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author HP
  */
 public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
+    private ControladorCantante controladorCantante;
     private ResourceBundle mensajes;
     /**
      * Creates new form VentanaBuscarCantante
      */
-    public VentanaBuscarCantante() {
+    public VentanaBuscarCantante(ControladorCantante controladorCantante) {
         initComponents();
+        this.controladorCantante = controladorCantante;
     }
     public void cambiarIdioma(Locale localizacion){
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
-        jlCodigo.setText(mensajes.getString("txtCodigoCantanteBuscar"));
-        jlNombre.setText(mensajes.getString("txtNombreCantanteBuscar"));
-        jlApellido.setText(mensajes.getString("txtApellidoCantanteBuscar"));
-        jlEdad.setText(mensajes.getString("txtEdadCantanteBusar"));
-        jlNacionalidad.setText(mensajes.getString("txtNacionalidadCantanteBuscar"));
-        jlSalario.setText(mensajes.getString("txttxtSalarioCantanteBuscar"));
-        jlSalario1.setText(mensajes.getString("txtNombreArtisticoCantanteBuscar"));
-        jlSalario2.setText(mensajes.getString("txtGeneroMusicalCantanteBuscar"));
-        jlSalario3.setText(mensajes.getString("txtSencillosCantanteBuscar"));
-        jlSalario4.setText(mensajes.getString("txtConciertosCantanteBuscar"));
-        jlSalario5.setText(mensajes.getString("txtGirasCantanteBuscar"));
+        jlCodigo.setText(mensajes.getString("txtCodigo"));
+        jlNombre.setText(mensajes.getString("txtNombre"));
+        jlApellido.setText(mensajes.getString("txtApellido"));
+        jlEdad.setText(mensajes.getString("txtEdad"));
+        jlNacionalidad.setText(mensajes.getString("cbxNacionalidad"));
+        jlSalario.setText(mensajes.getString("txtSalario"));
+        jlSalario1.setText(mensajes.getString("txtNombreArtisticoC"));
+        jlSalario2.setText(mensajes.getString("radioButtonRock"));
+        jlSalario3.setText(mensajes.getString("txtSencillosC"));
+        jlSalario4.setText(mensajes.getString("txtConciertosC"));
+        jlSalario5.setText(mensajes.getString("txtGirasC"));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,23 +62,46 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
         jlSalario3 = new javax.swing.JLabel();
         jlSalario4 = new javax.swing.JLabel();
         jlSalario5 = new javax.swing.JLabel();
-        txtCodigoCantanteBuscar = new javax.swing.JTextField();
-        txtNombreCantanteBuscar = new javax.swing.JTextField();
-        txtApellidoCantanteBuscar = new javax.swing.JTextField();
-        txtEdadCantanteBuscar = new javax.swing.JTextField();
-        txtNacionalidadCantanteBuscar = new javax.swing.JTextField();
-        txtSalarioCantanteBuscar = new javax.swing.JTextField();
-        txtNombreArtisticoCantanteBuscar = new javax.swing.JTextField();
-        txtGeneroMusicalCantanteBuscar = new javax.swing.JTextField();
-        txtSencillosCantanteBuscar = new javax.swing.JTextField();
-        txtConciertosCantanteBuscar = new javax.swing.JTextField();
-        txtGirasCantanteBuscar = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
+        txtSalario = new javax.swing.JTextField();
+        txtNombreArtisticoC = new javax.swing.JTextField();
+        txtSencillosC = new javax.swing.JTextField();
+        txtConciertosC = new javax.swing.JTextField();
+        txtGirasC = new javax.swing.JTextField();
+        cbxnacionalidad = new javax.swing.JComboBox<>();
+        radioButtonRock = new javax.swing.JRadioButton();
+        radioButtonPop = new javax.swing.JRadioButton();
+        radioButtonHiphop = new javax.swing.JRadioButton();
+        radioButtonRap = new javax.swing.JRadioButton();
+        radioButtonHeavyMetal = new javax.swing.JRadioButton();
+        radioButtonReggae = new javax.swing.JRadioButton();
+        btnBuscar = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar Cantante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         jPanel4.setForeground(new java.awt.Color(153, 153, 153));
@@ -108,80 +137,103 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
 
         jlSalario5.setText("Número de giras");
 
-        txtCodigoCantanteBuscar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtCodigoCantanteBuscar.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigo.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoCantanteBuscarActionPerformed(evt);
+                txtCodigoActionPerformed(evt);
             }
         });
 
-        txtNombreCantanteBuscar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtNombreCantanteBuscar.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtNombre.setEnabled(false);
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreCantanteBuscarActionPerformed(evt);
+                txtNombreActionPerformed(evt);
             }
         });
 
-        txtApellidoCantanteBuscar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtApellidoCantanteBuscar.addActionListener(new java.awt.event.ActionListener() {
+        txtApellido.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtApellido.setEnabled(false);
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoCantanteBuscarActionPerformed(evt);
+                txtApellidoActionPerformed(evt);
             }
         });
 
-        txtEdadCantanteBuscar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtEdadCantanteBuscar.addActionListener(new java.awt.event.ActionListener() {
+        txtEdad.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtEdad.setEnabled(false);
+        txtEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEdadCantanteBuscarActionPerformed(evt);
+                txtEdadActionPerformed(evt);
             }
         });
 
-        txtNacionalidadCantanteBuscar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtNacionalidadCantanteBuscar.addActionListener(new java.awt.event.ActionListener() {
+        txtSalario.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtSalario.setEnabled(false);
+        txtSalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNacionalidadCantanteBuscarActionPerformed(evt);
+                txtSalarioActionPerformed(evt);
             }
         });
 
-        txtSalarioCantanteBuscar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtSalarioCantanteBuscar.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreArtisticoC.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtNombreArtisticoC.setEnabled(false);
+        txtNombreArtisticoC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSalarioCantanteBuscarActionPerformed(evt);
+                txtNombreArtisticoCActionPerformed(evt);
             }
         });
 
-        txtNombreArtisticoCantanteBuscar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtNombreArtisticoCantanteBuscar.addActionListener(new java.awt.event.ActionListener() {
+        txtSencillosC.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtSencillosC.setEnabled(false);
+        txtSencillosC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreArtisticoCantanteBuscarActionPerformed(evt);
+                txtSencillosCActionPerformed(evt);
             }
         });
 
-        txtGeneroMusicalCantanteBuscar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtGeneroMusicalCantanteBuscar.addActionListener(new java.awt.event.ActionListener() {
+        txtConciertosC.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtConciertosC.setEnabled(false);
+        txtConciertosC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGeneroMusicalCantanteBuscarActionPerformed(evt);
+                txtConciertosCActionPerformed(evt);
             }
         });
 
-        txtSencillosCantanteBuscar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtSencillosCantanteBuscar.addActionListener(new java.awt.event.ActionListener() {
+        txtGirasC.setToolTipText("Ingrese las cancionesTop100Billboard");
+        txtGirasC.setEnabled(false);
+        txtGirasC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSencillosCantanteBuscarActionPerformed(evt);
+                txtGirasCActionPerformed(evt);
             }
         });
 
-        txtConciertosCantanteBuscar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtConciertosCantanteBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConciertosCantanteBuscarActionPerformed(evt);
-            }
-        });
+        cbxnacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Inglesa", "Colombiana", "Cubana ", "Chilena", "Ecuatoriana", "Mexicana", "Peruana", "Americana", "Española" }));
+        cbxnacionalidad.setEnabled(false);
 
-        txtGirasCantanteBuscar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtGirasCantanteBuscar.addActionListener(new java.awt.event.ActionListener() {
+        radioButtonRock.setSelected(true);
+        radioButtonRock.setText("Rock");
+        radioButtonRock.setEnabled(false);
+
+        radioButtonPop.setText("Pop");
+        radioButtonPop.setEnabled(false);
+
+        radioButtonHiphop.setText("Hiphop");
+        radioButtonHiphop.setEnabled(false);
+
+        radioButtonRap.setText("Rap");
+        radioButtonRap.setEnabled(false);
+
+        radioButtonHeavyMetal.setText("Heavy Metal");
+        radioButtonHeavyMetal.setEnabled(false);
+
+        radioButtonReggae.setText("Reggae");
+        radioButtonReggae.setEnabled(false);
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGirasCantanteBuscarActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -196,7 +248,7 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
                         .addComponent(btnAceptar)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlCodigo)
@@ -210,68 +262,92 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
                             .addComponent(jlSalario3)
                             .addComponent(jlSalario4)
                             .addComponent(jlSalario5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtGirasCantanteBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtConciertosCantanteBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSencillosCantanteBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtGeneroMusicalCantanteBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreArtisticoCantanteBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSalarioCantanteBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNacionalidadCantanteBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigoCantanteBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreCantanteBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtApellidoCantanteBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEdadCantanteBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                            .addComponent(txtGirasC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtConciertosC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSencillosC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombreArtisticoC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSalario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxnacionalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(radioButtonRock)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioButtonPop)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnBuscar))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(radioButtonHiphop)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(radioButtonRap)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(radioButtonHeavyMetal)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(radioButtonReggae))))))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jlCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigoCantanteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombreCantanteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApellidoCantanteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEdadCantanteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNacionalidadCantanteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxnacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSalarioCantanteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlSalario1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombreArtisticoCantanteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreArtisticoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlSalario2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGeneroMusicalCantanteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(radioButtonPop)
+                        .addComponent(radioButtonHiphop)
+                        .addComponent(radioButtonRap)
+                        .addComponent(radioButtonHeavyMetal)
+                        .addComponent(radioButtonRock)
+                        .addComponent(radioButtonReggae))
+                    .addComponent(jlSalario2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlSalario3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSencillosCantanteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSencillosC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlSalario4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtConciertosCantanteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtConciertosC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlSalario5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGirasCantanteBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGirasC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
@@ -283,7 +359,7 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,57 +370,108 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        this.limpiarCampos();
+        this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void txtCodigoCantanteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoCantanteBuscarActionPerformed
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoCantanteBuscarActionPerformed
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
-    private void txtNombreCantanteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreCantanteBuscarActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreCantanteBuscarActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void txtApellidoCantanteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoCantanteBuscarActionPerformed
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidoCantanteBuscarActionPerformed
+    }//GEN-LAST:event_txtApellidoActionPerformed
 
-    private void txtEdadCantanteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadCantanteBuscarActionPerformed
+    private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEdadCantanteBuscarActionPerformed
+    }//GEN-LAST:event_txtEdadActionPerformed
 
-    private void txtNacionalidadCantanteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacionalidadCantanteBuscarActionPerformed
+    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNacionalidadCantanteBuscarActionPerformed
+    }//GEN-LAST:event_txtSalarioActionPerformed
 
-    private void txtSalarioCantanteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioCantanteBuscarActionPerformed
+    private void txtNombreArtisticoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreArtisticoCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSalarioCantanteBuscarActionPerformed
+    }//GEN-LAST:event_txtNombreArtisticoCActionPerformed
 
-    private void txtNombreArtisticoCantanteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreArtisticoCantanteBuscarActionPerformed
+    private void txtSencillosCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSencillosCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreArtisticoCantanteBuscarActionPerformed
+    }//GEN-LAST:event_txtSencillosCActionPerformed
 
-    private void txtGeneroMusicalCantanteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroMusicalCantanteBuscarActionPerformed
+    private void txtConciertosCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConciertosCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtGeneroMusicalCantanteBuscarActionPerformed
+    }//GEN-LAST:event_txtConciertosCActionPerformed
 
-    private void txtSencillosCantanteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSencillosCantanteBuscarActionPerformed
+    private void txtGirasCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGirasCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSencillosCantanteBuscarActionPerformed
+    }//GEN-LAST:event_txtGirasCActionPerformed
 
-    private void txtConciertosCantanteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConciertosCantanteBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtConciertosCantanteBuscarActionPerformed
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        int codigo = Integer.parseInt(txtCodigo.getText());
+        Cantante cantante = controladorCantante.buscarCantante(codigo);
+        if (cantante != null) {
+            txtNombre.setText(cantante.getNombre());
+            String nombre = txtNombre.getText();
+            txtApellido.setText(cantante.getApellido());
+            String edad  = txtEdad.getText();
+            txtEdad.setText(Integer.toString(cantante.getEdad()));
+            String apellido = txtApellido.getText();
+            cbxnacionalidad.setSelectedItem(cantante.getNacionalidad());
+            String nacionalidad = cbxnacionalidad.getSelectedItem().toString();
+            txtSalario.setText(Double.toString(cantante.getSalario()));
+            String salario = txtSalario.getText();
+            txtNombreArtisticoC.setText(cantante.getNombreArtistico());
+            String nombreArtistico = txtNombreArtisticoC.getText();
+            radioButtonRock.setText(cantante.getGeneroMusical());
+            String generoMusical = radioButtonRock.getText();
+            txtSencillosC.setText(Integer.toString(cantante.getNumeroDeSencillos()));
+            String sencillos = txtSencillosC.getText();
+            txtConciertosC.setText(Integer.toString(cantante.getNumeroDeConciertos()));
+            String conciertos = txtConciertosC.getText();
+            txtGirasC.setText(Integer.toString(cantante.getNumeroDeGiras()));
+            String numeroDeGiras = txtGirasC.getText();
+        } else {
+            JOptionPane.showMessageDialog(this, "La persona con codigo " + codigo + " no ha sido encontrada!");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void txtGirasCantanteBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGirasCantanteBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGirasCantanteBuscarActionPerformed
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        this.limpiarCampos();
+    }//GEN-LAST:event_formInternalFrameClosing
 
+    public void limpiarCampos() {
+        this.txtCodigo.setText("");
+        this.txtNombre.setText("");
+        this.txtApellido.setText("");
+        this.txtEdad.setText("");
+        this.txtSalario.setText("");
+        this.txtNombreArtisticoC.setText("");
+        this.txtSencillosC.setText("");
+        this.txtConciertosC.setText("");
+        this.txtGirasC.setText("");
+        this.radioButtonRock.setSelected(true);
+    }
 
+    private void cambiarEstadoCampos(boolean estado) {
+        this.txtCodigo.setEnabled(!estado);
+        this.txtNombre.setEnabled(estado);
+        this.txtApellido.setEnabled(estado);
+        this.txtEdad.setEnabled(estado);
+        this.cbxnacionalidad.setEnabled(estado);
+        this.txtSalario.setEnabled(estado);
+        this.radioButtonRock.setEnabled(estado);
+        this.txtSencillosC.setEnabled(estado);
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JComboBox<String> cbxnacionalidad;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel jlApellido;
     private javax.swing.JLabel jlCodigo;
@@ -357,16 +484,20 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlSalario3;
     private javax.swing.JLabel jlSalario4;
     private javax.swing.JLabel jlSalario5;
-    private javax.swing.JTextField txtApellidoCantanteBuscar;
-    private javax.swing.JTextField txtCodigoCantanteBuscar;
-    private javax.swing.JTextField txtConciertosCantanteBuscar;
-    private javax.swing.JTextField txtEdadCantanteBuscar;
-    private javax.swing.JTextField txtGeneroMusicalCantanteBuscar;
-    private javax.swing.JTextField txtGirasCantanteBuscar;
-    private javax.swing.JTextField txtNacionalidadCantanteBuscar;
-    private javax.swing.JTextField txtNombreArtisticoCantanteBuscar;
-    private javax.swing.JTextField txtNombreCantanteBuscar;
-    private javax.swing.JTextField txtSalarioCantanteBuscar;
-    private javax.swing.JTextField txtSencillosCantanteBuscar;
+    private javax.swing.JRadioButton radioButtonHeavyMetal;
+    private javax.swing.JRadioButton radioButtonHiphop;
+    private javax.swing.JRadioButton radioButtonPop;
+    private javax.swing.JRadioButton radioButtonRap;
+    private javax.swing.JRadioButton radioButtonReggae;
+    private javax.swing.JRadioButton radioButtonRock;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtConciertosC;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtGirasC;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreArtisticoC;
+    private javax.swing.JTextField txtSalario;
+    private javax.swing.JTextField txtSencillosC;
     // End of variables declaration//GEN-END:variables
 }

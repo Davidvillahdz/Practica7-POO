@@ -46,7 +46,6 @@ public class CantanteDAO implements ICantanteDAO {
                 break;
             }
         }
-
     }
 
     @Override
@@ -65,5 +64,4 @@ public class CantanteDAO implements ICantanteDAO {
     public List<Cantante> findAll() {
         return cantantes;
     }
-
 }
