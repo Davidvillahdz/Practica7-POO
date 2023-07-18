@@ -16,10 +16,6 @@ import java.util.List;
  */
 public class ControladorCompositor {
 
-    public static Object buscarCancion(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     private Compositor compositor;
     private Cancion cancion;
 
@@ -75,12 +71,9 @@ public class ControladorCompositor {
         compositor.actualizarCancion(cancion);
     }
 
-    public void agregarCancion(Cancion cancion, Compositor compositor) {
-        compositor.agregarCancion(cancion);
-    }
-
     public Cancion buscarCancion(Compositor compositor, int codigo) {
-        return compositor.buscarCanciones(codigo);
+        compositor.buscarCanciones(codigo);
+        return cancion;
     }
 
     public void eliminarCancion(Compositor compositor, int codigo) {
