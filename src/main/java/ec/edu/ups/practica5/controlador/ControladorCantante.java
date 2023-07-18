@@ -23,9 +23,7 @@ public class ControladorCantante {
      public ControladorCantante() {
     }
 
-    public ControladorCantante(Cantante cantante, Disco disco, ICantanteDAO cantanteDAO) {
-        this.cantante = cantante;
-        this.disco = disco;
+    public ControladorCantante( ICantanteDAO cantanteDAO) {
         this.cantanteDAO = cantanteDAO;
     }
 

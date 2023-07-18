@@ -49,43 +49,50 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuListarCActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="MenuMostrarC">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Mostrar"/>
-              </Properties>
-            </MenuItem>
             <Menu class="javax.swing.JMenu" name="MenuCancion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancion"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="MenuItemAgregar">
+                <MenuItem class="javax.swing.JMenuItem" name="MenuItemAgregarCa">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Agregar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemAgregarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemAgregarCaActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="MenuItemBuscar">
+                <MenuItem class="javax.swing.JMenuItem" name="MenuItemBuscarCa">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemBuscarCaActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="MenuItemActualizar">
+                <MenuItem class="javax.swing.JMenuItem" name="MenuItemActualizarCa">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Actualizar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemActualizarCaActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="MenuItemEliminar">
+                <MenuItem class="javax.swing.JMenuItem" name="MenuItemEliminarCa">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemEliminarCaActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="MenuItemListar">
+                <MenuItem class="javax.swing.JMenuItem" name="MenuItemListarCa">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Listar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemListarCaActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -130,40 +137,45 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuListarCantanteActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="MenuItemMostrar1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Mostrar"/>
-              </Properties>
-            </MenuItem>
             <Menu class="javax.swing.JMenu" name="menuDisco">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Disco"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuDiscoActionPerformed"/>
+              </Events>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="MenuItemAgregar1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Agregar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemAgregar1ActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="MenuItemBuscar1">
+                <MenuItem class="javax.swing.JMenuItem" name="MenuItemBuscarD">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemBuscarDActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="MenuItemActualizar1">
+                <MenuItem class="javax.swing.JMenuItem" name="MenuItemActualizarD">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Actualizar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemActualizarDActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="MenuItemEliminar1">
+                <MenuItem class="javax.swing.JMenuItem" name="MenuItemEliminarD">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                   </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="MenuItemListar1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Listar"/>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuItemEliminarDActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -173,6 +185,42 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cliente"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuAgregarCl">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuAgregarClActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuBuscarCl">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuBuscarClActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuActualizarCl">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Actualizar"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuEliminarCl">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eliminar"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MenuListarCl">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuListarClActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="MenuIdiomas">
           <Properties>

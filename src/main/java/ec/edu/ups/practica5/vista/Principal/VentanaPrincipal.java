@@ -105,7 +105,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         MenuEliminarC.setText(mensajes.getString("Menu.EliminarC"));
         MenuBuscarC.setText(mensajes.getString("Menu.BuscarC"));
         MenuListarC.setText(mensajes.getString("Menu.ListarC"));
-        MenuMostrarC.setText(mensajes.getString("Menu.MostrarC"));
         MenuCancion.setText(mensajes.getString("Menu.Cancion"));
         if (ventanaAgregarCompositor != null) {
             ventanaAgregarCompositor.cambiarIdioma(localizacion);
@@ -151,27 +150,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         MenuActualizarC = new javax.swing.JMenuItem();
         MenuEliminarC = new javax.swing.JMenuItem();
         MenuListarC = new javax.swing.JMenuItem();
-        MenuMostrarC = new javax.swing.JMenuItem();
         MenuCancion = new javax.swing.JMenu();
-        MenuItemAgregar = new javax.swing.JMenuItem();
-        MenuItemBuscar = new javax.swing.JMenuItem();
-        MenuItemActualizar = new javax.swing.JMenuItem();
-        MenuItemEliminar = new javax.swing.JMenuItem();
-        MenuItemListar = new javax.swing.JMenuItem();
+        MenuItemAgregarCa = new javax.swing.JMenuItem();
+        MenuItemBuscarCa = new javax.swing.JMenuItem();
+        MenuItemActualizarCa = new javax.swing.JMenuItem();
+        MenuItemEliminarCa = new javax.swing.JMenuItem();
+        MenuItemListarCa = new javax.swing.JMenuItem();
         MenuCantante = new javax.swing.JMenu();
         MenuAgregar = new javax.swing.JMenuItem();
         MenuBuscarCantante = new javax.swing.JMenuItem();
         MenuActualizarCantante = new javax.swing.JMenuItem();
         MenuEliminarCantante = new javax.swing.JMenuItem();
         MenuListarCantante = new javax.swing.JMenuItem();
-        MenuItemMostrar1 = new javax.swing.JMenuItem();
         menuDisco = new javax.swing.JMenu();
         MenuItemAgregar1 = new javax.swing.JMenuItem();
-        MenuItemBuscar1 = new javax.swing.JMenuItem();
-        MenuItemActualizar1 = new javax.swing.JMenuItem();
-        MenuItemEliminar1 = new javax.swing.JMenuItem();
-        MenuItemListar1 = new javax.swing.JMenuItem();
+        MenuItemBuscarD = new javax.swing.JMenuItem();
+        MenuItemActualizarD = new javax.swing.JMenuItem();
+        MenuItemEliminarD = new javax.swing.JMenuItem();
         MenuCliente = new javax.swing.JMenu();
+        MenuAgregarCl = new javax.swing.JMenuItem();
+        MenuBuscarCl = new javax.swing.JMenuItem();
+        MenuActualizarCl = new javax.swing.JMenuItem();
+        MenuEliminarCl = new javax.swing.JMenuItem();
+        MenuListarCl = new javax.swing.JMenuItem();
         MenuIdiomas = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -240,30 +241,47 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         MenuCompositor.add(MenuListarC);
 
-        MenuMostrarC.setText("Mostrar");
-        MenuCompositor.add(MenuMostrarC);
-
         MenuCancion.setText("Cancion");
 
-        MenuItemAgregar.setText("Agregar");
-        MenuItemAgregar.addActionListener(new java.awt.event.ActionListener() {
+        MenuItemAgregarCa.setText("Agregar");
+        MenuItemAgregarCa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItemAgregarActionPerformed(evt);
+                MenuItemAgregarCaActionPerformed(evt);
             }
         });
-        MenuCancion.add(MenuItemAgregar);
+        MenuCancion.add(MenuItemAgregarCa);
 
-        MenuItemBuscar.setText("Buscar");
-        MenuCancion.add(MenuItemBuscar);
+        MenuItemBuscarCa.setText("Buscar");
+        MenuItemBuscarCa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemBuscarCaActionPerformed(evt);
+            }
+        });
+        MenuCancion.add(MenuItemBuscarCa);
 
-        MenuItemActualizar.setText("Actualizar");
-        MenuCancion.add(MenuItemActualizar);
+        MenuItemActualizarCa.setText("Actualizar");
+        MenuItemActualizarCa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemActualizarCaActionPerformed(evt);
+            }
+        });
+        MenuCancion.add(MenuItemActualizarCa);
 
-        MenuItemEliminar.setText("Eliminar");
-        MenuCancion.add(MenuItemEliminar);
+        MenuItemEliminarCa.setText("Eliminar");
+        MenuItemEliminarCa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemEliminarCaActionPerformed(evt);
+            }
+        });
+        MenuCancion.add(MenuItemEliminarCa);
 
-        MenuItemListar.setText("Listar");
-        MenuCancion.add(MenuItemListar);
+        MenuItemListarCa.setText("Listar");
+        MenuItemListarCa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemListarCaActionPerformed(evt);
+            }
+        });
+        MenuCancion.add(MenuItemListarCa);
 
         MenuCompositor.add(MenuCancion);
 
@@ -301,31 +319,81 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         MenuCantante.add(MenuListarCantante);
 
-        MenuItemMostrar1.setText("Mostrar");
-        MenuCantante.add(MenuItemMostrar1);
-
         menuDisco.setText("Disco");
+        menuDisco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuDiscoActionPerformed(evt);
+            }
+        });
 
         MenuItemAgregar1.setText("Agregar");
+        MenuItemAgregar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemAgregar1ActionPerformed(evt);
+            }
+        });
         menuDisco.add(MenuItemAgregar1);
 
-        MenuItemBuscar1.setText("Buscar");
-        menuDisco.add(MenuItemBuscar1);
+        MenuItemBuscarD.setText("Buscar");
+        MenuItemBuscarD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemBuscarDActionPerformed(evt);
+            }
+        });
+        menuDisco.add(MenuItemBuscarD);
 
-        MenuItemActualizar1.setText("Actualizar");
-        menuDisco.add(MenuItemActualizar1);
+        MenuItemActualizarD.setText("Actualizar");
+        MenuItemActualizarD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemActualizarDActionPerformed(evt);
+            }
+        });
+        menuDisco.add(MenuItemActualizarD);
 
-        MenuItemEliminar1.setText("Eliminar");
-        menuDisco.add(MenuItemEliminar1);
-
-        MenuItemListar1.setText("Listar");
-        menuDisco.add(MenuItemListar1);
+        MenuItemEliminarD.setText("Eliminar");
+        MenuItemEliminarD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemEliminarDActionPerformed(evt);
+            }
+        });
+        menuDisco.add(MenuItemEliminarD);
 
         MenuCantante.add(menuDisco);
 
         jMenuBar2.add(MenuCantante);
 
         MenuCliente.setText("Cliente");
+
+        MenuAgregarCl.setText("Agregar");
+        MenuAgregarCl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuAgregarClActionPerformed(evt);
+            }
+        });
+        MenuCliente.add(MenuAgregarCl);
+
+        MenuBuscarCl.setText("Buscar");
+        MenuBuscarCl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuBuscarClActionPerformed(evt);
+            }
+        });
+        MenuCliente.add(MenuBuscarCl);
+
+        MenuActualizarCl.setText("Actualizar");
+        MenuCliente.add(MenuActualizarCl);
+
+        MenuEliminarCl.setText("Eliminar");
+        MenuCliente.add(MenuEliminarCl);
+
+        MenuListarCl.setText("Listar");
+        MenuListarCl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuListarClActionPerformed(evt);
+            }
+        });
+        MenuCliente.add(MenuListarCl);
+
         jMenuBar2.add(MenuCliente);
 
         MenuIdiomas.setText("Idiomas");
@@ -471,14 +539,107 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaBuscarCantante.setVisible(true);
     }//GEN-LAST:event_MenuBuscarCantanteActionPerformed
 
-    private void MenuItemAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAgregarActionPerformed
+    private void MenuItemAgregarCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAgregarCaActionPerformed
         if(ventanaAgregarCancion == null){
-            ventanaAgregarCancion = new VentanaAgregarCancion();
+            ventanaAgregarCancion = new VentanaAgregarCancion(controladorCompositor);
             desktopPane.add(ventanaAgregarCancion);
             
         }
         ventanaAgregarCancion.setVisible(true);
-    }//GEN-LAST:event_MenuItemAgregarActionPerformed
+    }//GEN-LAST:event_MenuItemAgregarCaActionPerformed
+
+    private void menuDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDiscoActionPerformed
+        
+    }//GEN-LAST:event_menuDiscoActionPerformed
+
+    private void MenuAgregarClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAgregarClActionPerformed
+        if(ventanaAgregarCliente == null){
+            ventanaAgregarCliente = new VentanaAgregarCliente(controladorCompositor);
+            desktopPane.add(ventanaAgregarDisco);
+            
+        }
+        ventanaAgregarDisco.setVisible(true);
+    }//GEN-LAST:event_MenuAgregarClActionPerformed
+
+    private void MenuBuscarClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuBuscarClActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuBuscarClActionPerformed
+
+    private void MenuListarClActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuListarClActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuListarClActionPerformed
+
+    private void MenuItemBuscarCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemBuscarCaActionPerformed
+        if(ventanaBuscarCancion == null){
+            ventanaBuscarCancion = new VentanaBuscarCancion(controladorCompositor);
+            desktopPane.add(ventanaBuscarCancion);
+            
+        }
+        ventanaBuscarCancion.setVisible(true);
+    }//GEN-LAST:event_MenuItemBuscarCaActionPerformed
+
+    private void MenuItemActualizarCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemActualizarCaActionPerformed
+        if(ventanaActualizarCancion == null){
+            ventanaActualizarCancion = new VentanaActualizarCancion(controladorCompositor);
+            desktopPane.add(ventanaActualizarCancion);
+            
+        }
+        ventanaActualizarCancion.setVisible(true);
+    }//GEN-LAST:event_MenuItemActualizarCaActionPerformed
+
+    private void MenuItemEliminarCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemEliminarCaActionPerformed
+        if(ventanaEliminarCancion == null){
+            ventanaEliminarCancion = new VentanaEliminarCancion(controladorCompositor);
+            desktopPane.add(ventanaEliminarCancion);
+            
+        }
+        ventanaEliminarCancion.setVisible(true);
+    }//GEN-LAST:event_MenuItemEliminarCaActionPerformed
+
+    private void MenuItemListarCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemListarCaActionPerformed
+        if(ventanaListarCancion == null){
+            ventanaListarCancion = new VentanaListarCancion(controladorCompositor);
+            desktopPane.add(ventanaAgregarCancion);
+            
+        }
+        ventanaListarCancion.setVisible(true);
+    }//GEN-LAST:event_MenuItemListarCaActionPerformed
+
+    private void MenuItemAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAgregar1ActionPerformed
+        if(ventanaAgregarDisco == null){
+            ventanaAgregarDisco = new VentanaAgregarDisco(controladorCantante);
+            desktopPane.add(ventanaAgregarDisco);
+            
+        }
+        ventanaAgregarDisco.setVisible(true);
+    }//GEN-LAST:event_MenuItemAgregar1ActionPerformed
+
+    private void MenuItemBuscarDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemBuscarDActionPerformed
+        if(ventanaBuscarDisco == null){
+            ventanaBuscarDisco = new VentanaBuscarDisco(controladorCantante);
+            desktopPane.add(ventanaBuscarDisco);
+            
+        }
+        ventanaBuscarDisco.setVisible(true);
+    }//GEN-LAST:event_MenuItemBuscarDActionPerformed
+
+    private void MenuItemActualizarDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemActualizarDActionPerformed
+        if(ventanaActualizarDisco == null){
+            ventanaActualizarDisco = new VentanaActualizarDisco(controladorCantante);
+            desktopPane.add(ventanaActualizarDisco);
+            
+        }
+        ventanaActualizarDisco.setVisible(true);
+    }//GEN-LAST:event_MenuItemActualizarDActionPerformed
+
+    private void MenuItemEliminarDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemEliminarDActionPerformed
+        if(ventanaEliminarDisco == null){
+            ventanaEliminarDisco = new VentanaEliminarDisco(controladorCantante);
+            desktopPane.add(ventanaEliminarDisco);
+            
+        }
+        ventanaEliminarDisco.setVisible(true);
+    }//GEN-LAST:event_MenuItemEliminarDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -518,31 +679,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuActualizarC;
     private javax.swing.JMenuItem MenuActualizarCantante;
+    private javax.swing.JMenuItem MenuActualizarCl;
     private javax.swing.JMenuItem MenuAgregar;
     private javax.swing.JMenuItem MenuAgregarC;
+    private javax.swing.JMenuItem MenuAgregarCl;
     private javax.swing.JMenuItem MenuBuscarC;
     private javax.swing.JMenuItem MenuBuscarCantante;
+    private javax.swing.JMenuItem MenuBuscarCl;
     private javax.swing.JMenu MenuCancion;
     private javax.swing.JMenu MenuCantante;
     private javax.swing.JMenu MenuCliente;
     private javax.swing.JMenu MenuCompositor;
     private javax.swing.JMenuItem MenuEliminarC;
     private javax.swing.JMenuItem MenuEliminarCantante;
+    private javax.swing.JMenuItem MenuEliminarCl;
     private javax.swing.JMenu MenuIdiomas;
-    private javax.swing.JMenuItem MenuItemActualizar;
-    private javax.swing.JMenuItem MenuItemActualizar1;
-    private javax.swing.JMenuItem MenuItemAgregar;
+    private javax.swing.JMenuItem MenuItemActualizarCa;
+    private javax.swing.JMenuItem MenuItemActualizarD;
     private javax.swing.JMenuItem MenuItemAgregar1;
-    private javax.swing.JMenuItem MenuItemBuscar;
-    private javax.swing.JMenuItem MenuItemBuscar1;
-    private javax.swing.JMenuItem MenuItemEliminar;
-    private javax.swing.JMenuItem MenuItemEliminar1;
-    private javax.swing.JMenuItem MenuItemListar;
-    private javax.swing.JMenuItem MenuItemListar1;
-    private javax.swing.JMenuItem MenuItemMostrar1;
+    private javax.swing.JMenuItem MenuItemAgregarCa;
+    private javax.swing.JMenuItem MenuItemBuscarCa;
+    private javax.swing.JMenuItem MenuItemBuscarD;
+    private javax.swing.JMenuItem MenuItemEliminarCa;
+    private javax.swing.JMenuItem MenuItemEliminarD;
+    private javax.swing.JMenuItem MenuItemListarCa;
     private javax.swing.JMenuItem MenuListarC;
     private javax.swing.JMenuItem MenuListarCantante;
-    private javax.swing.JMenuItem MenuMostrarC;
+    private javax.swing.JMenuItem MenuListarCl;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;

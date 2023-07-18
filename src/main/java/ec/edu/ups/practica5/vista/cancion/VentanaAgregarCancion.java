@@ -18,8 +18,10 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
+
     private ResourceBundle mensajes;
     private ControladorCompositor controladorCompositor;
+
     /**
      * Creates new form VentanaAgregarCancion
      */
@@ -27,13 +29,15 @@ public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
         initComponents();
         this.controladorCompositor = controladorCompositor;
     }
-    public void cambiarIdioma(Locale localizacion){
+
+    public void cambiarIdioma(Locale localizacion) {
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
         jLabel1.setText(mensajes.getString("txtCodigo"));
         jLabel2.setText(mensajes.getString("txtTituloCA"));
         jLabel3.setText(mensajes.getString("txtLetraCA"));
         jLabel4.setText(mensajes.getString("txtTiempoEnMinutosCA"));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -181,7 +185,7 @@ public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
-     private void limpiarCamposCancion() {
+    private void limpiarCamposCancion() {
         txtCodigo.setText("");
         txtTiempoEnMinutos.setText("");
         txtLetra.setText("");

@@ -15,6 +15,11 @@ import java.util.List;
  * @author HP
  */
 public class ControladorCompositor {
+
+    public static Object buscarCancion(int codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     private Compositor compositor;
     private Cancion cancion;
 
@@ -36,13 +41,13 @@ public class ControladorCompositor {
     public void actualizarCompositor() {
         compositorDAO.update(compositor);
     }
-    
+
     public Compositor buscarCompositor(int codigo) {
         this.compositor = compositorDAO.read(codigo);
         return compositor;
     }
-    
-    public boolean eliminarCompositor( Compositor compositor ) {
+
+    public boolean eliminarCompositor(Compositor compositor) {
         Compositor compositorEncontrado = this.buscarCompositor(compositor.getCodigo());
         if (compositorEncontrado != null) {
             compositorDAO.delete(compositorEncontrado);
@@ -61,23 +66,28 @@ public class ControladorCompositor {
         compositor = compositorDAO.read(codigo);
         compositor.agregarCancion(cancion);
     }
-    public void agregarClienteCan(Compositor compositor, Cantante cantante){
+
+    public void agregarClienteCan(Compositor compositor, Cantante cantante) {
         compositor.agregarCliente(cantante);
     }
-    
-    public void actualizarCancion(Compositor compositor,Cancion cancion){
+
+    public void actualizarCancion(Compositor compositor, Cancion cancion) {
         compositor.actualizarCancion(cancion);
     }
-    
-    public void agregarCancion(Cancion cancion,Compositor compositor){
+
+    public void agregarCancion(Cancion cancion, Compositor compositor) {
         compositor.agregarCancion(cancion);
     }
-    
-    public Cancion buscarCancion(Compositor compositor,int codigo){
+
+    public Cancion buscarCancion(Compositor compositor, int codigo) {
         return compositor.buscarCanciones(codigo);
     }
-    
-    public void eliminarCancion(Compositor compositor, int codigo){
+
+    public void eliminarCancion(Compositor compositor, int codigo) {
         compositor.eliminarCancion(codigo);
+    }
+
+    public void agregarCancion(Cancion cancion, int codigo) {
+        compositor.agregarCancion(cancion);
     }
 }

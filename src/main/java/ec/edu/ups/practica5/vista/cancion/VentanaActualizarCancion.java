@@ -190,7 +190,7 @@ public class VentanaActualizarCancion extends javax.swing.JInternalFrame {
         if (txtCodigo2.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo del codigo no esta lleno");
         } else {
-            Cancion cancion = ControladorCompositor.buscarCancion(controladorCompositor.buscarCompositor(Integer.parseInt(txtId.getText())), Integer.parseInt(txtCodigoCancion.getText()));
+            Cancion cancion = ControladorCompositor.buscarCancion(controladorCompositor.buscarCompositor(Integer.parseInt(Integer.parseInt(txtCodigo2.getText()), txtCodigo2.getText())));
             if (cancion != null) {
                 txtTiempoEnMinutos2.setText(String.valueOf(cancion.getTiempoEnMinutos()));
                 txtLetra2.setText(cancion.getLetra());

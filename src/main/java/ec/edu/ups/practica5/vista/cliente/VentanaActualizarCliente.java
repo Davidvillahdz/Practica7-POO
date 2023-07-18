@@ -4,7 +4,10 @@
  */
 package ec.edu.ups.practica5.vista.cliente;
 
+import ec.edu.ups.practica5.controlador.ControladorCompositor;
+import ec.edu.ups.practica5.modelo.Compositor;
 import ec.edu.ups.practica5.vista.cantante.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,11 +15,13 @@ import ec.edu.ups.practica5.vista.cantante.*;
  */
 public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
 
+    private ControladorCompositor controladorCompositor;
     /**
      * Creates new form VentanaActualizarCantante
      */
-    public VentanaActualizarCliente() {
+    public VentanaActualizarCliente(ControladorCompositor controladorCompositor) {
         initComponents();
+        this.controladorCompositor = controladorCompositor;
     }
 
     /**
@@ -41,13 +46,19 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
         txtNombreCantanteActualizar = new javax.swing.JTextField();
         txtApellidoCantanteActualizar = new javax.swing.JTextField();
         txtEdadCantanteActualizar = new javax.swing.JTextField();
-        txtNacionalidadCantanteActualizar = new javax.swing.JTextField();
         txtSalarioCantanteActualizar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        cbxnacionalidad = new javax.swing.JComboBox<>();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actualizar Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(153, 153, 153));
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -96,19 +107,21 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        txtNacionalidadCantanteActualizar.setToolTipText("Ingrese las cancionesTop100Billboard");
-        txtNacionalidadCantanteActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNacionalidadCantanteActualizarActionPerformed(evt);
-            }
-        });
-
         txtSalarioCantanteActualizar.setToolTipText("Ingrese las cancionesTop100Billboard");
         txtSalarioCantanteActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSalarioCantanteActualizarActionPerformed(evt);
             }
         });
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        cbxnacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Inglesa", "Colombiana", "Cubana ", "Chilena", "Ecuatoriana", "Mexicana", "Peruana", "Americana", "Española" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,14 +143,17 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
                             .addComponent(jlEdad)
                             .addComponent(jlNacionalidad)
                             .addComponent(jlSalario))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodigoCantanteActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnBuscar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCodigoCantanteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtSalarioCantanteActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNacionalidadCantanteActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEdadCantanteActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtApellidoCantanteActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreCantanteActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNombreCantanteActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxnacionalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -162,12 +178,14 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNacionalidadCantanteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbxnacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSalarioCantanteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtCodigoCantanteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCodigoCantanteActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
@@ -190,7 +208,8 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        this.limpiarCampos();
+        this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtCodigoCantanteActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoCantanteActualizarActionPerformed
@@ -209,18 +228,92 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEdadCantanteActualizarActionPerformed
 
-    private void txtNacionalidadCantanteActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacionalidadCantanteActualizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNacionalidadCantanteActualizarActionPerformed
-
     private void txtSalarioCantanteActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioCantanteActualizarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSalarioCantanteActualizarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        int codigo = Integer.parseInt(txtCodigoCantanteActualizar.getText());
+        Compositor compositor = controladorCompositor.buscarCompositor(codigo);
+        if (compositor != null) {
+            txtNombreCantanteActualizar.setText(compositor.getNombre());
+            txtApellidoCantanteActualizar.setText(compositor.getApellido());
+            txtEdadCantanteActualizar.setText(Integer.toString(compositor.getEdad()));
+            cbxnacionalidad.setSelectedItem(compositor.getNacionalidad());
+            txtSalarioCantanteActualizar.setText(Double.toString(compositor.getSalario()));
+        } else {
+            JOptionPane.showMessageDialog(this, "La persona con codigo " + codigo + " no ha sido encontrada!");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        try {
+            int codigo = 0;
+            if (!txtCodigoCantanteActualizar.getText().isEmpty()) {
+                codigo = Integer.parseInt(txtCodigoCantanteActualizar.getText());
+            } else {
+                throw new IllegalArgumentException("El campo Código no puede estar vacío.");
+            }
+
+            String nombre = txtNombreCantanteActualizar.getText();
+            String apellido = txtApellidoCantanteActualizar.getText();
+
+            int edad = 0;
+            if (!txtEdadCantanteActualizar.getText().isEmpty()) {
+                edad = Integer.parseInt(txtEdadCantanteActualizar.getText());
+            } else {
+                throw new IllegalArgumentException("El campo Edad no puede estar vacío.");
+            }
+            String nacionalidad = cbxnacionalidad.getSelectedItem().toString();
+
+            double salario = 0.0;
+            if (!txtSalarioCantanteActualizar.getText().isEmpty()) {
+                salario = Double.parseDouble(txtSalarioCantanteActualizar.getText());
+            } else {
+                throw new IllegalArgumentException("El campo Salario no puede estar vacío.");
+            }
+
+            
+            Compositor compositor = new Compositor();
+            compositor.setCodigo(codigo);
+            compositor.setNombre(nombre);
+            compositor.setApellido(apellido);
+            compositor.setEdad(edad);
+            compositor.setNacionalidad(nacionalidad);
+            compositor.setSalario(salario);
+
+            controladorCompositor.crearCompositor(compositor);
+
+            JOptionPane.showMessageDialog(this, "Compositor agregado exitosamente.");
+            limpiarCampos();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: uno o más campos no son numéricos.");
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }              
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    public void limpiarCampos() {
+        txtCodigoCantanteActualizar.setText("");
+        txtNombreCantanteActualizar.setText("");
+        txtApellidoCantanteActualizar.setText("");
+        txtEdadCantanteActualizar.setText("");
+        cbxnacionalidad.setSelectedIndex(0);
+        txtSalarioCantanteActualizar.setText("");
+    }
+    private void cambiarEstadoCampos(boolean estado){
+        this.txtCodigoCantanteActualizar.setEnabled(!estado);
+        this.txtNombreCantanteActualizar.setEnabled(estado);
+        txtApellidoCantanteActualizar.setEnabled(estado);
+        txtEdadCantanteActualizar.setEnabled(estado);
+        cbxnacionalidad.setEnabled(estado);
+        txtSalarioCantanteActualizar.setEnabled(estado);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JComboBox<String> cbxnacionalidad;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jlApellido;
     private javax.swing.JLabel jlCodigo;
@@ -231,7 +324,6 @@ public class VentanaActualizarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtApellidoCantanteActualizar;
     private javax.swing.JTextField txtCodigoCantanteActualizar;
     private javax.swing.JTextField txtEdadCantanteActualizar;
-    private javax.swing.JTextField txtNacionalidadCantanteActualizar;
     private javax.swing.JTextField txtNombreCantanteActualizar;
     private javax.swing.JTextField txtSalarioCantanteActualizar;
     // End of variables declaration//GEN-END:variables

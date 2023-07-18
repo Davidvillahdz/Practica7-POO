@@ -4,17 +4,23 @@
  */
 package ec.edu.ups.practica5.vista.cliente;
 
+import ec.edu.ups.practica5.controlador.ControladorCompositor;
+import ec.edu.ups.practica5.modelo.Compositor;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
  */
 public class VentanaAgregarCliente extends javax.swing.JInternalFrame {
 
+    private ControladorCompositor controladorCompositor;
     /**
      * Creates new form VentanaAgregarCliente
      */
-    public VentanaAgregarCliente() {
+    public VentanaAgregarCliente(ControladorCompositor controladorCompositor) {
         initComponents();
+        this.controladorCompositor = controladorCompositor;
     }
 
     /**
@@ -40,7 +46,7 @@ public class VentanaAgregarCliente extends javax.swing.JInternalFrame {
         txtApellidoCantanteEliminar = new javax.swing.JTextField();
         txtEdadCantanteEliminar = new javax.swing.JTextField();
         txtSalarioCantanteEliminar = new javax.swing.JTextField();
-        nacionalidad = new javax.swing.JComboBox<>();
+        cbxnacionalidad = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -52,6 +58,11 @@ public class VentanaAgregarCliente extends javax.swing.JInternalFrame {
         jPanel6.setForeground(new java.awt.Color(153, 153, 153));
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +118,7 @@ public class VentanaAgregarCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        nacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Inglesa", "Colombiana", "Cubana ", "Chilena", "Ecuatoriana", "Mexicana", "Peruana", "Americana", "Española" }));
+        cbxnacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Argentina", "Inglesa", "Colombiana", "Cubana ", "Chilena", "Ecuatoriana", "Mexicana", "Peruana", "Americana", "Española" }));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -137,7 +148,7 @@ public class VentanaAgregarCliente extends javax.swing.JInternalFrame {
                                 .addComponent(txtNombreCantanteEliminar)
                                 .addComponent(txtCodigoCantanteEliminar)
                                 .addComponent(txtSalarioCantanteEliminar))
-                            .addComponent(nacionalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cbxnacionalidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -168,7 +179,7 @@ public class VentanaAgregarCliente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtEdadCantanteEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cbxnacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
@@ -214,10 +225,73 @@ public class VentanaAgregarCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSalarioCantanteEliminarActionPerformed
 
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        try {
+            int codigo = 0;
+            if (!txtCodigoCantanteEliminar.getText().isEmpty()) {
+                codigo = Integer.parseInt(txtCodigoCantanteEliminar.getText());
+            } else {
+                throw new IllegalArgumentException("El campo Código no puede estar vacío.");
+            }
 
+            String nombre = txtNombreCantanteEliminar.getText();
+            String apellido = txtApellidoCantanteEliminar.getText();
+
+            int edad = 0;
+            if (!txtEdadCantanteEliminar.getText().isEmpty()) {
+                edad = Integer.parseInt(txtEdadCantanteEliminar.getText());
+            } else {
+                throw new IllegalArgumentException("El campo Edad no puede estar vacío.");
+            }
+            String nacionalidad =  cbxnacionalidad.getSelectedItem().toString();
+
+            double salario = 0.0;
+            if (!txtSalarioCantanteEliminar.getText().isEmpty()) {
+                salario = Double.parseDouble(txtSalarioCantanteEliminar.getText());
+            } else {
+                throw new IllegalArgumentException("El campo Salario no puede estar vacío.");
+            }
+
+
+            Compositor compositor = new Compositor();
+            compositor.setCodigo(codigo);
+            compositor.setNombre(nombre);
+            compositor.setApellido(apellido);
+            compositor.setEdad(edad);
+            compositor.setNacionalidad(nacionalidad);
+            compositor.setSalario(salario);
+
+            controladorCompositor.crearCompositor(compositor);
+
+            JOptionPane.showMessageDialog(this, "Compositor agregado exitosamente.");
+            limpiarCampos();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: uno o más campos no son numéricos.");
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+     public void limpiarCampos() {
+        txtCodigoCantanteEliminar.setText("");
+        txtNombreCantanteEliminar.setText("");
+        txtApellidoCantanteEliminar.setText("");
+        txtEdadCantanteEliminar.setText("");
+        cbxnacionalidad.setSelectedIndex(0);
+        txtSalarioCantanteEliminar.setText("");
+    }
+    private void cambiarEstadoCampos(boolean estado){
+        this.txtCodigoCantanteEliminar.setEnabled(!estado);
+        this.txtNombreCantanteEliminar.setEnabled(estado);
+        txtApellidoCantanteEliminar.setEnabled(estado);
+        txtEdadCantanteEliminar.setEnabled(estado);
+        cbxnacionalidad.setEnabled(estado);
+        txtSalarioCantanteEliminar.setEnabled(estado);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JComboBox<String> cbxnacionalidad;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel jlApellido;
     private javax.swing.JLabel jlCodigo;
@@ -225,7 +299,6 @@ public class VentanaAgregarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlNacionalidad;
     private javax.swing.JLabel jlNombre;
     private javax.swing.JLabel jlSalario;
-    private javax.swing.JComboBox<String> nacionalidad;
     private javax.swing.JTextField txtApellidoCantanteEliminar;
     private javax.swing.JTextField txtCodigoCantanteEliminar;
     private javax.swing.JTextField txtEdadCantanteEliminar;

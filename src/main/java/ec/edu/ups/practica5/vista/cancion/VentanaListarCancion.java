@@ -22,7 +22,7 @@ public class VentanaListarCancion extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaListarCancion
      */
-    public VentanaListarCancion() {
+    public VentanaListarCancion(ControladorCompositor controladorCompositor) {
         initComponents();
         this.controladorCompositor = controladorCompositor;
     }

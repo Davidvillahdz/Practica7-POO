@@ -206,6 +206,26 @@ public class VentanaActualizarCompositor extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+         int codigo = Integer.parseInt(txtCodigo.getText());
+        Compositor compositor = controladorCompositor.buscarCompositor(codigo);
+        if (compositor != null) {
+            txtNombre.setText(compositor.getNombre());
+            txtApellido.setText(compositor.getApellido());
+            txtEdad.setText(Integer.toString(compositor.getEdad()));
+            cbxNacionalidad.setSelectedItem(compositor.getNacionalidad());
+            txtSalario.setText(Double.toString(compositor.getSalario()));
+            txtNumeroComposiciones.setText(Integer.toString(compositor.getNumeroDeComposiciones()));
+        } else {
+            JOptionPane.showMessageDialog(this, "La persona con codigo " + codigo + " no ha sido encontrada!");
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.limpiarCampos();
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try {
             int codigo = 0;
             if (!txtCodigo.getText().isEmpty()) {
@@ -256,26 +276,6 @@ public class VentanaActualizarCompositor extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Error: uno o más campos no son numéricos.");
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-    }//GEN-LAST:event_btnAceptarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.limpiarCampos();
-        this.setVisible(false);
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        int codigo = Integer.parseInt(txtCodigo.getText());
-        Compositor compositor = controladorCompositor.buscarCompositor(codigo);
-        if (compositor != null) {
-            txtNombre.setText(compositor.getNombre());
-            txtApellido.setText(compositor.getApellido());
-            txtEdad.setText(Integer.toString(compositor.getEdad()));
-            cbxNacionalidad.setSelectedItem(compositor.getNacionalidad());
-            txtSalario.setText(Double.toString(compositor.getSalario()));
-            txtNumeroComposiciones.setText(Integer.toString(compositor.getNumeroDeComposiciones()));
-        } else {
-            JOptionPane.showMessageDialog(this, "La persona con codigo " + codigo + " no ha sido encontrada!");
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
