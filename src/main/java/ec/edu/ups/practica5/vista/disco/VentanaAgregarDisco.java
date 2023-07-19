@@ -7,6 +7,7 @@ package ec.edu.ups.practica5.vista.disco;
 import ec.edu.ups.practica5.controlador.ControladorCantante;
 import ec.edu.ups.practica5.modelo.Cantante;
 import ec.edu.ups.practica5.modelo.Disco;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
@@ -25,7 +26,19 @@ public class VentanaAgregarDisco extends javax.swing.JInternalFrame {
         initComponents();
         this.controladorCantante = controladorCantante;
     }
-
+    public void cambiarIdioma(Locale localizacion) {
+        mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
+        jblCodigoAgregarDisco.setText(mensajes.getString("txtCodigo"));
+        jblNombreArAgregarDisco.setText(mensajes.getString("txtNombreArtistico"));
+        jblApellidoAAgregarDisco.setText(mensajes.getString("txtApellido"));
+        jblEdadCAgregarDisco.setText(mensajes.getString("txtEdad"));
+        jblAnioLanzamientoAgregarDisco.setText(mensajes.getString("txtAnioLanzamiento"));
+        jblNombreCAgregar.setText(mensajes.getString("txtNombreArtisticoC"));
+        jblNombreDiscoAgregar.setText(mensajes.getString("txtNombreDisco"));
+        jblIdAgregarDisco.setText(mensajes.getString("txtIdCantante"));
+        bntBuscar.setText(mensajes.getString("bntBuscar"));
+        bntCancelar.setText(mensajes.getString("bntCancelar"));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +54,7 @@ public class VentanaAgregarDisco extends javax.swing.JInternalFrame {
         bntBuscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jblNombreCAgregarDisco = new javax.swing.JLabel();
+        jblNombreCAgregar = new javax.swing.JLabel();
         jblApellidoAAgregarDisco = new javax.swing.JLabel();
         txtApellido = new javax.swing.JTextField();
         jblEdadCAgregarDisco = new javax.swing.JLabel();
@@ -49,7 +62,7 @@ public class VentanaAgregarDisco extends javax.swing.JInternalFrame {
         jblNombreArAgregarDisco = new javax.swing.JLabel();
         txtNombreArtistico = new javax.swing.JTextField();
         jblCodigoAgregarDisco = new javax.swing.JLabel();
-        jblNombreDiscoAgregarDisco = new javax.swing.JLabel();
+        jblNombreDiscoAgregar = new javax.swing.JLabel();
         jblAnioLanzamientoAgregarDisco = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         txtNombreDisco = new javax.swing.JTextField();
@@ -84,7 +97,7 @@ public class VentanaAgregarDisco extends javax.swing.JInternalFrame {
             }
         });
 
-        jblNombreCAgregarDisco.setText("Nombre : ");
+        jblNombreCAgregar.setText("Nombre : ");
 
         jblApellidoAAgregarDisco.setText("Apellido :");
 
@@ -103,7 +116,7 @@ public class VentanaAgregarDisco extends javax.swing.JInternalFrame {
 
         jblCodigoAgregarDisco.setText("Codigo :");
 
-        jblNombreDiscoAgregarDisco.setText("Nombre :");
+        jblNombreDiscoAgregar.setText("Nombre :");
 
         jblAnioLanzamientoAgregarDisco.setText("Año de lanzamiento :");
 
@@ -151,7 +164,7 @@ public class VentanaAgregarDisco extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jblNombreCAgregarDisco)
+                            .addComponent(jblNombreCAgregar)
                             .addComponent(jblEdadCAgregarDisco))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -179,7 +192,7 @@ public class VentanaAgregarDisco extends javax.swing.JInternalFrame {
                         .addGap(47, 47, 47)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jblCodigoAgregarDisco)
-                            .addComponent(jblNombreDiscoAgregarDisco)
+                            .addComponent(jblNombreDiscoAgregar)
                             .addComponent(jblAnioLanzamientoAgregarDisco)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(133, 133, 133)
@@ -204,7 +217,7 @@ public class VentanaAgregarDisco extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jblNombreCAgregarDisco)
+                    .addComponent(jblNombreCAgregar)
                     .addComponent(jblApellidoAAgregarDisco)
                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -221,7 +234,7 @@ public class VentanaAgregarDisco extends javax.swing.JInternalFrame {
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jblNombreDiscoAgregarDisco)
+                    .addComponent(jblNombreDiscoAgregar)
                     .addComponent(txtNombreDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -351,8 +364,8 @@ public class VentanaAgregarDisco extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jblEdadCAgregarDisco;
     private javax.swing.JLabel jblIdAgregarDisco;
     private javax.swing.JLabel jblNombreArAgregarDisco;
-    private javax.swing.JLabel jblNombreCAgregarDisco;
-    private javax.swing.JLabel jblNombreDiscoAgregarDisco;
+    private javax.swing.JLabel jblNombreCAgregar;
+    private javax.swing.JLabel jblNombreDiscoAgregar;
     private javax.swing.JTextField txtAnioLanzamiento;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCodigo;

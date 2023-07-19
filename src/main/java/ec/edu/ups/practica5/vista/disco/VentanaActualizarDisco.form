@@ -94,8 +94,8 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtNombre4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtEdad4" alignment="0" pref="140" max="32767" attributes="0"/>
+                                  <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtEdad" alignment="0" pref="140" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -104,8 +104,8 @@
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtApellido4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtNombreArtistico4" alignment="0" pref="130" max="32767" attributes="0"/>
+                                  <Component id="txtApellido" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtNombreArtistico" alignment="0" pref="130" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -128,12 +128,12 @@
                       </Group>
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="bntCancelar4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="bntCancelar" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtCodigo4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtNombreDisco4" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtAnioLanzamiento4" alignment="0" pref="142" max="32767" attributes="0"/>
+                                  <Component id="txtCodigo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtNombreDisco" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtAnioLanzamiento" alignment="0" pref="142" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="bntBuscarDisco" min="-2" max="-2" attributes="0"/>
@@ -145,9 +145,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jblIdActualizarDisco" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="txtIdCantante4" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="txtIdCantante" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="bntBuscar4" min="-2" max="-2" attributes="0"/>
+                      <Component id="bntBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -158,45 +158,45 @@
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jblIdActualizarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtIdCantante4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="bntBuscar4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtIdCantante" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bntBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtNombre4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jblNombreActualizarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jblApellidoActualizarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtApellido4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtApellido" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jblEdadActualizarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtEdad4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEdad" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jblNombreArtisticoActualizarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNombreArtistico4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNombreArtistico" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jblCodigoActualizarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCodigo4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="bntBuscarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jblNombreDiscoActualizarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNombreDisco4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNombreDisco" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jblAnioLanzaminietoActualizarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtAnioLanzamiento4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtAnioLanzamiento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="30" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="bntActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="bntCancelar4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="bntCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
@@ -209,14 +209,14 @@
                 <Property name="text" type="java.lang.String" value="Buscar cantante para encontar disco : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtIdCantante4">
+            <Component class="javax.swing.JTextField" name="txtIdCantante">
             </Component>
-            <Component class="javax.swing.JButton" name="bntBuscar4">
+            <Component class="javax.swing.JButton" name="bntBuscar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntBuscar4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntBuscarActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel38">
@@ -224,13 +224,13 @@
                 <Property name="text" type="java.lang.String" value="Ingrese el nombre del disco"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNombre4">
+            <Component class="javax.swing.JTextField" name="txtNombre">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombre4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jblNombreActualizarDisco">
@@ -243,7 +243,7 @@
                 <Property name="text" type="java.lang.String" value="Apellido :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtApellido4">
+            <Component class="javax.swing.JTextField" name="txtApellido">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="enabled" type="boolean" value="false"/>
@@ -254,7 +254,7 @@
                 <Property name="text" type="java.lang.String" value="Edad :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtEdad4">
+            <Component class="javax.swing.JTextField" name="txtEdad">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="enabled" type="boolean" value="false"/>
@@ -265,7 +265,7 @@
                 <Property name="text" type="java.lang.String" value="Nombre artistico :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNombreArtistico4">
+            <Component class="javax.swing.JTextField" name="txtNombreArtistico">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="enabled" type="boolean" value="false"/>
@@ -286,25 +286,25 @@
                 <Property name="text" type="java.lang.String" value="A&#xf1;o de lanzamiento :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCodigo4">
+            <Component class="javax.swing.JTextField" name="txtCodigo">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigo4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNombreDisco4">
+            <Component class="javax.swing.JTextField" name="txtNombreDisco">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtAnioLanzamiento4">
+            <Component class="javax.swing.JTextField" name="txtAnioLanzamiento">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnioLanzamiento4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnioLanzamientoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bntActualizar">
@@ -316,12 +316,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntActualizarActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="bntCancelar4">
+            <Component class="javax.swing.JButton" name="bntCancelar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntCancelar4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bntCancelarActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bntBuscarDisco">

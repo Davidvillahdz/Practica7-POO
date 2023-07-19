@@ -65,7 +65,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jblNombreCAgregarDisco" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jblNombreCAgregar" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jblEdadCAgregarDisco" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -101,7 +101,7 @@
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jblCodigoAgregarDisco" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jblNombreDiscoAgregarDisco" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jblNombreDiscoAgregar" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jblAnioLanzamientoAgregarDisco" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -135,7 +135,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jblNombreCAgregarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jblNombreCAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jblApellidoAAgregarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtApellido" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -155,7 +155,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jblNombreDiscoAgregarDisco" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jblNombreDiscoAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtNombreDisco" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -203,7 +203,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jblNombreCAgregarDisco">
+        <Component class="javax.swing.JLabel" name="jblNombreCAgregar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nombre : "/>
           </Properties>
@@ -246,7 +246,7 @@
             <Property name="text" type="java.lang.String" value="Codigo :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jblNombreDiscoAgregarDisco">
+        <Component class="javax.swing.JLabel" name="jblNombreDiscoAgregar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nombre :"/>
           </Properties>

@@ -29,23 +29,20 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
         initComponents();
         this.controladorCantante = controladorCantante;
     }
-    public void cambiarIdioma(Locale localizacion){
+    public void cambiarIdioma(Locale localizacion) {
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
-        jblCodigoActualizarDisco.setText(mensajes.getString("ventana.codigo"));
-        jblIdActualizarDisco.setText(mensajes.getString("ventana.id"));
-        jblNombreActualizarDisco.setText(mensajes.getString("ventana.nombre"));
-        jblNombreArtisticoActualizarDisco.setText(mensajes.getString("ventanaCantante.nombreartistico"));
-        jblEdadActualizarDisco.setText(mensajes.getString("ventana.edad"));
-        jblApellidoActualizarDisco.setText(mensajes.getString("ventana.apellido"));
-        jblNombreDiscoActualizarDisco.setText(mensajes.getString("ventana.nombre"));
-        jblAnioLanzaminietoActualizarDisco.setText(mensajes.getString("ventanaDisco.aniolanzamiento"));
-        bntActualizar.setText(mensajes.getString("boton.actualizar"));
-        bntBuscar4.setText(mensajes.getString("boton.buscar"));
-        bntBuscarDisco.setText(mensajes.getString("boton.buscar"));
-        bntCancelar4.setText(mensajes.getString("boton.cancelar"));
-        Border borde = BorderFactory.createTitledBorder(mensajes.getString("menuItem.actualizar"));
-        panelA.setBorder(borde); 
-
+        jblCodigoActualizarDisco.setText(mensajes.getString("txtCodigo"));
+        jblNombreArtisticoActualizarDisco.setText(mensajes.getString("txtNombreArtistico"));
+        jblApellidoActualizarDisco.setText(mensajes.getString("txtApellido"));
+        jblEdadActualizarDisco.setText(mensajes.getString("txtEdad"));
+        jblAnioLanzaminietoActualizarDisco.setText(mensajes.getString("txtAnioLanzamiento"));
+        jblNombreDiscoActualizarDisco.setText(mensajes.getString("txtNombreArtisticoC"));
+        jblNombreActualizarDisco.setText(mensajes.getString("txtNombreDisco"));
+        jblIdActualizarDisco.setText(mensajes.getString("txtIdCantante"));
+        bntActualizar.setText(mensajes.getString("bntActualizar"));
+        bntBuscar.setText(mensajes.getString("bntBuscar"));
+        bntBuscarDisco.setText(mensajes.getString("bntBuscarDisco"));
+        bntCancelar.setText(mensajes.getString("bntCancelar"));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,25 +56,25 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
         panelA = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jblIdActualizarDisco = new javax.swing.JLabel();
-        txtIdCantante4 = new javax.swing.JTextField();
-        bntBuscar4 = new javax.swing.JButton();
+        txtIdCantante = new javax.swing.JTextField();
+        bntBuscar = new javax.swing.JButton();
         jLabel38 = new javax.swing.JLabel();
-        txtNombre4 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jblNombreActualizarDisco = new javax.swing.JLabel();
         jblApellidoActualizarDisco = new javax.swing.JLabel();
-        txtApellido4 = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
         jblEdadActualizarDisco = new javax.swing.JLabel();
-        txtEdad4 = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
         jblNombreArtisticoActualizarDisco = new javax.swing.JLabel();
-        txtNombreArtistico4 = new javax.swing.JTextField();
+        txtNombreArtistico = new javax.swing.JTextField();
         jblCodigoActualizarDisco = new javax.swing.JLabel();
         jblNombreDiscoActualizarDisco = new javax.swing.JLabel();
         jblAnioLanzaminietoActualizarDisco = new javax.swing.JLabel();
-        txtCodigo4 = new javax.swing.JTextField();
-        txtNombreDisco4 = new javax.swing.JTextField();
-        txtAnioLanzamiento4 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
+        txtNombreDisco = new javax.swing.JTextField();
+        txtAnioLanzamiento = new javax.swing.JTextField();
         bntActualizar = new javax.swing.JButton();
-        bntCancelar4 = new javax.swing.JButton();
+        bntCancelar = new javax.swing.JButton();
         bntBuscarDisco = new javax.swing.JButton();
 
         setClosable(true);
@@ -90,20 +87,20 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
 
         jblIdActualizarDisco.setText("Buscar cantante para encontar disco : ");
 
-        bntBuscar4.setText("Buscar");
-        bntBuscar4.addActionListener(new java.awt.event.ActionListener() {
+        bntBuscar.setText("Buscar");
+        bntBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntBuscar4ActionPerformed(evt);
+                bntBuscarActionPerformed(evt);
             }
         });
 
         jLabel38.setText("Ingrese el nombre del disco");
 
-        txtNombre4.setEditable(false);
-        txtNombre4.setEnabled(false);
-        txtNombre4.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.setEditable(false);
+        txtNombre.setEnabled(false);
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombre4ActionPerformed(evt);
+                txtNombreActionPerformed(evt);
             }
         });
 
@@ -111,18 +108,18 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
 
         jblApellidoActualizarDisco.setText("Apellido :");
 
-        txtApellido4.setEditable(false);
-        txtApellido4.setEnabled(false);
+        txtApellido.setEditable(false);
+        txtApellido.setEnabled(false);
 
         jblEdadActualizarDisco.setText("Edad :");
 
-        txtEdad4.setEditable(false);
-        txtEdad4.setEnabled(false);
+        txtEdad.setEditable(false);
+        txtEdad.setEnabled(false);
 
         jblNombreArtisticoActualizarDisco.setText("Nombre artistico :");
 
-        txtNombreArtistico4.setEditable(false);
-        txtNombreArtistico4.setEnabled(false);
+        txtNombreArtistico.setEditable(false);
+        txtNombreArtistico.setEnabled(false);
 
         jblCodigoActualizarDisco.setText("Codigo :");
 
@@ -130,19 +127,19 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
 
         jblAnioLanzaminietoActualizarDisco.setText("Año de lanzamiento :");
 
-        txtCodigo4.setEnabled(false);
-        txtCodigo4.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigo.setEnabled(false);
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigo4ActionPerformed(evt);
+                txtCodigoActionPerformed(evt);
             }
         });
 
-        txtNombreDisco4.setEnabled(false);
+        txtNombreDisco.setEnabled(false);
 
-        txtAnioLanzamiento4.setEnabled(false);
-        txtAnioLanzamiento4.addActionListener(new java.awt.event.ActionListener() {
+        txtAnioLanzamiento.setEnabled(false);
+        txtAnioLanzamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAnioLanzamiento4ActionPerformed(evt);
+                txtAnioLanzamientoActionPerformed(evt);
             }
         });
 
@@ -154,10 +151,10 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
             }
         });
 
-        bntCancelar4.setText("Cancelar");
-        bntCancelar4.addActionListener(new java.awt.event.ActionListener() {
+        bntCancelar.setText("Cancelar");
+        bntCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntCancelar4ActionPerformed(evt);
+                bntCancelarActionPerformed(evt);
             }
         });
 
@@ -186,16 +183,16 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
                             .addComponent(jblEdadActualizarDisco))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombre4)
-                            .addComponent(txtEdad4, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                            .addComponent(txtNombre)
+                            .addComponent(txtEdad, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jblNombreArtisticoActualizarDisco)
                             .addComponent(jblApellidoActualizarDisco))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtApellido4)
-                            .addComponent(txtNombreArtistico4, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                            .addComponent(txtApellido)
+                            .addComponent(txtNombreArtistico, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,12 +207,12 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
                         .addComponent(bntActualizar)))
                 .addGap(45, 45, 45)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bntCancelar4)
+                    .addComponent(bntCancelar)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCodigo4)
-                            .addComponent(txtNombreDisco4)
-                            .addComponent(txtAnioLanzamiento4, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
+                            .addComponent(txtCodigo)
+                            .addComponent(txtNombreDisco)
+                            .addComponent(txtAnioLanzamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bntBuscarDisco)))
                 .addContainerGap())
@@ -223,9 +220,9 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jblIdActualizarDisco)
                 .addGap(61, 61, 61)
-                .addComponent(txtIdCantante4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtIdCantante, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bntBuscar4)
+                .addComponent(bntBuscar)
                 .addGap(39, 39, 39))
         );
         jPanel7Layout.setVerticalGroup(
@@ -234,39 +231,39 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jblIdActualizarDisco)
-                    .addComponent(txtIdCantante4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bntBuscar4))
+                    .addComponent(txtIdCantante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bntBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jblNombreActualizarDisco)
                     .addComponent(jblApellidoActualizarDisco)
-                    .addComponent(txtApellido4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jblEdadActualizarDisco)
-                    .addComponent(txtEdad4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jblNombreArtisticoActualizarDisco)
-                    .addComponent(txtNombreArtistico4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreArtistico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(jLabel38)
                 .addGap(28, 28, 28)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jblCodigoActualizarDisco)
-                    .addComponent(txtCodigo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bntBuscarDisco))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jblNombreDiscoActualizarDisco)
-                    .addComponent(txtNombreDisco4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jblAnioLanzaminietoActualizarDisco)
-                    .addComponent(txtAnioLanzamiento4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAnioLanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bntActualizar)
-                    .addComponent(bntCancelar4))
+                    .addComponent(bntCancelar))
                 .addGap(16, 16, 16))
         );
 
@@ -307,85 +304,85 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bntBuscar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscar4ActionPerformed
+    private void bntBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarActionPerformed
         // TODO add your handling code here:
-        if (txtIdCantante4.getText().isEmpty()) {
+        if (txtIdCantante.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No esta lleno el campo ");
         }else{
-            cantanteTempo = controladorCantante.buscarCantante(Integer.parseInt(txtIdCantante4.getText()));
+            cantanteTempo = controladorCantante.buscarCantante(Integer.parseInt(txtIdCantante.getText()));
             if (cantanteTempo!=null) {
-                txtIdCantante4.setEnabled(false);
+                txtIdCantante.setEnabled(false);
                 this.mostrarDatos(cantanteTempo);
-                bntBuscar4.setEnabled(false);
+                bntBuscar.setEnabled(false);
                 bntBuscarDisco.setEnabled(true);
                 //txtNombreDisco4.setEnabled(true);
                 //txtCodigo4.setEnabled(true);
                 //txtAnioLanzamiento4.setEnabled(true);
-                txtCodigo4.setEnabled(true);
+                txtCodigo.setEnabled(true);
 
             }else{
-                JOptionPane.showMessageDialog(this, "No existe "+ txtIdCantante4.getText()+" en cantantes. ");
+                JOptionPane.showMessageDialog(this, "No existe "+ txtIdCantante.getText()+" en cantantes. ");
             }
         }
-    }//GEN-LAST:event_bntBuscar4ActionPerformed
+    }//GEN-LAST:event_bntBuscarActionPerformed
 
-    private void txtNombre4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre4ActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombre4ActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
 
-    private void txtCodigo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigo4ActionPerformed
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigo4ActionPerformed
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
-    private void txtAnioLanzamiento4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnioLanzamiento4ActionPerformed
+    private void txtAnioLanzamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnioLanzamientoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnioLanzamiento4ActionPerformed
+    }//GEN-LAST:event_txtAnioLanzamientoActionPerformed
 
     private void bntActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntActualizarActionPerformed
 
-        if (txtAnioLanzamiento4.getText().isEmpty()||txtNombreDisco4.getText().isEmpty()||txtCodigo4.getText().isEmpty()) {
+        if (txtAnioLanzamiento.getText().isEmpty()||txtNombreDisco.getText().isEmpty()||txtCodigo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No se a llenado todos los campos correctamente");
         }else{
-            Disco disquito = new Disco(Integer.parseInt(txtCodigo4.getText()), txtNombreDisco4.getText(), Integer.parseInt(txtAnioLanzamiento4.getText()));
+            Disco disquito = new Disco(Integer.parseInt(txtCodigo.getText()), txtNombreDisco.getText(), Integer.parseInt(txtAnioLanzamiento.getText()));
             cantanteTempo.actualizarDisco(disquito);
             JOptionPane.showMessageDialog(this, "Se actualizado correctamente");
-            txtNombreDisco4.setText("");
-            txtAnioLanzamiento4.setText("");
-            txtCodigo4.setText("");
-            txtNombreDisco4.setEnabled(false);
-            txtAnioLanzamiento4.setEnabled(false);
-            txtCodigo4.setEnabled(true);
+            txtNombreDisco.setText("");
+            txtAnioLanzamiento.setText("");
+            txtCodigo.setText("");
+            txtNombreDisco.setEnabled(false);
+            txtAnioLanzamiento.setEnabled(false);
+            txtCodigo.setEnabled(true);
             bntActualizar.setEnabled(false);
             System.out.println(cantanteTempo);
         }
     }//GEN-LAST:event_bntActualizarActionPerformed
 
-    private void bntCancelar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCancelar4ActionPerformed
+    private void bntCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntCancelarActionPerformed
         // TODO add your handling code here:
         this.limpiarCampos();
         this.setVisible(false);
-        txtNombreDisco4.setEnabled(false);
-        txtAnioLanzamiento4.setEnabled(false);
+        txtNombreDisco.setEnabled(false);
+        txtAnioLanzamiento.setEnabled(false);
         bntActualizar.setEnabled(false);
-        bntBuscar4.setEnabled(true);
-        txtIdCantante4.setEnabled(true);
+        bntBuscar.setEnabled(true);
+        txtIdCantante.setEnabled(true);
         bntBuscarDisco.setEnabled(false);
-        txtCodigo4.setEnabled(false);
-    }//GEN-LAST:event_bntCancelar4ActionPerformed
+        txtCodigo.setEnabled(false);
+    }//GEN-LAST:event_bntCancelarActionPerformed
 
     private void bntBuscarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntBuscarDiscoActionPerformed
         // TODO add your handling code here:
-        if (txtCodigo4.getText().isEmpty()) {
+        if (txtCodigo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No esta lleno el campo ");
         }else {
-            disco = cantanteTempo.buscarDisco(Integer.parseInt(txtCodigo4.getText()));
+            disco = cantanteTempo.buscarDisco(Integer.parseInt(txtCodigo.getText()));
             if (disco!=null) {
-                txtCodigo4.setEnabled(false);
-                txtAnioLanzamiento4.setText(String.valueOf(disco.getAnioDelanzamiento()));
+                txtCodigo.setEnabled(false);
+                txtAnioLanzamiento.setText(String.valueOf(disco.getAnioDelanzamiento()));
                 bntActualizar.setEnabled(true);
-                txtAnioLanzamiento4.setEnabled(true);
-                txtNombreDisco4.setEnabled(true);
-                txtNombreDisco4.setText(disco.getNombre());
+                txtAnioLanzamiento.setEnabled(true);
+                txtNombreDisco.setEnabled(true);
+                txtNombreDisco.setText(disco.getNombre());
                 bntBuscarDisco.setEnabled(false);
             }else{
                 JOptionPane.showMessageDialog(this, "Nose el disco ");
@@ -394,31 +391,31 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_bntBuscarDiscoActionPerformed
 
     public void limpiarCampos(){
-        txtIdCantante4.setText("");
+        txtIdCantante.setText("");
         
-        txtApellido4.setText("");
-        txtCodigo4.setText("");
-        txtEdad4.setText("");
-        txtNombreArtistico4.setText("");
-        txtNombreDisco4.setText("");
-        txtAnioLanzamiento4.setText("");
-        txtNombre4.setText("");
+        txtApellido.setText("");
+        txtCodigo.setText("");
+        txtEdad.setText("");
+        txtNombreArtistico.setText("");
+        txtNombreDisco.setText("");
+        txtAnioLanzamiento.setText("");
+        txtNombre.setText("");
     }
     public void mostrarDatos(Cantante cantante){
-        txtIdCantante4.setEnabled(false);
-        bntBuscar4.setEnabled(false);
-        txtNombre4.setText(cantante.getNombre());
-        txtEdad4.setText( String.valueOf(cantante.getEdad()));
-        txtNombreArtistico4.setText(cantante.getNombreArtistico());
-        txtApellido4.setText(cantante.getApellido());
+        txtIdCantante.setEnabled(false);
+        bntBuscar.setEnabled(false);
+        txtNombre.setText(cantante.getNombre());
+        txtEdad.setText( String.valueOf(cantante.getEdad()));
+        txtNombreArtistico.setText(cantante.getNombreArtistico());
+        txtApellido.setText(cantante.getApellido());
         
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntActualizar;
-    private javax.swing.JButton bntBuscar4;
+    private javax.swing.JButton bntBuscar;
     private javax.swing.JButton bntBuscarDisco;
-    private javax.swing.JButton bntCancelar4;
+    private javax.swing.JButton bntCancelar;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel jblAnioLanzaminietoActualizarDisco;
@@ -430,13 +427,13 @@ public class VentanaActualizarDisco extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jblNombreArtisticoActualizarDisco;
     private javax.swing.JLabel jblNombreDiscoActualizarDisco;
     private javax.swing.JPanel panelA;
-    private javax.swing.JTextField txtAnioLanzamiento4;
-    private javax.swing.JTextField txtApellido4;
-    private javax.swing.JTextField txtCodigo4;
-    private javax.swing.JTextField txtEdad4;
-    private javax.swing.JTextField txtIdCantante4;
-    private javax.swing.JTextField txtNombre4;
-    private javax.swing.JTextField txtNombreArtistico4;
-    private javax.swing.JTextField txtNombreDisco4;
+    private javax.swing.JTextField txtAnioLanzamiento;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtIdCantante;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreArtistico;
+    private javax.swing.JTextField txtNombreDisco;
     // End of variables declaration//GEN-END:variables
 }
