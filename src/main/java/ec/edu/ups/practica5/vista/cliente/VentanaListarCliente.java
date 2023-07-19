@@ -4,19 +4,24 @@
  */
 package ec.edu.ups.practica5.vista.cliente;
 
+import ec.edu.ups.practica5.controlador.ControladorCompositor;
+import ec.edu.ups.practica5.modelo.Compositor;
 import ec.edu.ups.practica5.vista.cantante.*;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Usuario
  */
 public class VentanaListarCliente extends javax.swing.JInternalFrame {
-
+    private ControladorCompositor controladorCompositor;
     /**
      * Creates new form VentanaListarCantante
      */
-    public VentanaListarCliente() {
+    public VentanaListarCliente(ControladorCompositor controladorCompositor) {
         initComponents();
+        this.controladorCompositor = controladorCompositor;
     }
 
     /**
@@ -29,7 +34,6 @@ public class VentanaListarCliente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCompositor = new javax.swing.JTable();
@@ -43,9 +47,12 @@ public class VentanaListarCliente extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listar Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(153, 153, 153));
 
-        btnAceptar.setText("Aceptar");
-
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         tblCompositor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,9 +77,7 @@ public class VentanaListarCliente extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(222, 222, 222)
-                .addComponent(btnAceptar)
-                .addGap(41, 41, 41)
+                .addGap(335, 335, 335)
                 .addComponent(btnCancelar)
                 .addContainerGap(355, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,9 +90,7 @@ public class VentanaListarCliente extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(433, 433, 433)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnAceptar))
+                .addComponent(btnCancelar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -112,9 +115,30 @@ public class VentanaListarCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.setEnabled(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {                                            
+        this.cargarDatosTabla();
+    } 
+    private void cargarDatosTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) this.tblCompositor.getModel();
+        modelo.setNumRows(0);
+        List<Compositor> listaCompositores = controladorCompositor.verCompositores();
+        for (Compositor compositor : listaCompositores) {
+            int codigo = compositor.getCodigo();
+            String nombre = compositor.getNombre();
+            String apellido = compositor.getApellido();
+            int edad = compositor.getEdad();
+            String nacionalidad = compositor.getNacionalidad();
+            Double salario = compositor.getSalario();
+            Object[] rowData = {codigo, nombre, apellido, edad, nacionalidad, salario};
+            modelo.addRow(rowData);
+        }
+        this.tblCompositor.setModel(modelo);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

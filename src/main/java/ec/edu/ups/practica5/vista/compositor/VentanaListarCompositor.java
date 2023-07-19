@@ -5,10 +5,7 @@
 package ec.edu.ups.practica5.vista.compositor;
 
 import ec.edu.ups.practica5.controlador.ControladorCompositor;
-import ec.edu.ups.practica5.modelo.Cancion;
-import ec.edu.ups.practica5.modelo.Cantante;
 import ec.edu.ups.practica5.modelo.Compositor;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
