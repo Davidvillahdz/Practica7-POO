@@ -6,11 +6,12 @@ package ec.edu.ups.practica5.dao;
 
 import ec.edu.ups.practica5.idao.ICantanteDAO;
 import ec.edu.ups.practica5.modelo.Cantante;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -19,65 +20,50 @@ import java.util.List;
  */
 public class CantanteDAO implements ICantanteDAO {
 
-    private List<Cantante> cantantes;
-    private String filePath;
+    private String folderPath;
 
-    public CantanteDAO(String filePath) {
-        cantantes = new ArrayList<>();
-        this.filePath = filePath;
+    public CantanteDAO(String folderPath) {
+        this.folderPath = folderPath;
     }
 
-    @Override
     public void create(Cantante cantante) {
-        cantantes.add(cantante);
-        saveDataToFile();
+        String filePath = folderPath + File.separator + cantante.getCodigo() + ".dat";
+        saveDataToFile(filePath, cantante);
     }
 
-    @Override
     public Cantante read(int codigo) {
-        for (Cantante cantante : cantantes) {
-            if (cantante.getCodigo() == codigo) {
-                return cantante;
-            }
-        }
-        return null;
+        String filePath = folderPath + File.separator + codigo + ".dat";
+        return readDataFromFile(filePath);
     }
 
-    @Override
     public void update(Cantante cantante) {
-        for (int i = 0; i < cantantes.size(); i++) {
-            Cantante c = cantantes.get(i);
-            if (c.getCodigo() == cantante.getCodigo()) {
-                cantantes.set(i, cantante);
-                saveDataToFile();
-                break;
-            }
-        }
+        String filePath = folderPath + File.separator + cantante.getCodigo() + ".dat";
+        saveDataToFile(filePath, cantante);
     }
 
-    @Override
     public void delete(Cantante cantante) {
-        Iterator<Cantante> it = cantantes.iterator();
-        while (it.hasNext()) {
-            Cantante c = it.next();
-            if (c.getCodigo() == cantante.getCodigo()) {
-                it.remove();
-                saveDataToFile();
-                break;
-            }
+        String filePath = folderPath + File.separator + cantante.getCodigo() + ".dat";
+        File file = new File(filePath);
+        if (file.exists()) {
+            file.delete();
         }
     }
 
-    @Override
-    public List<Cantante> findAll() {
-        return cantantes;
-    }
-
-    private void saveDataToFile() {
+    private void saveDataToFile(String filePath, Cantante cantante) {
         try (FileOutputStream fos = new FileOutputStream(filePath); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(cantantes);
+            oos.writeObject(cantante);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private Cantante readDataFromFile(String filePath) {
+        Cantante cantante = null;
+        try (FileInputStream fis = new FileInputStream(filePath); ObjectInputStream ois = new ObjectInputStream(fis)) {
+            cantante = (Cantante) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return cantante;
     }
 }

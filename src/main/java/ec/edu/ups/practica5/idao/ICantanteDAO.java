@@ -23,6 +23,5 @@ public interface ICantanteDAO {
 
     public void delete(Cantante cantante);
 
-    public List<Cantante> findAll();
 
 }
