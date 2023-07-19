@@ -174,7 +174,7 @@ public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
 
                 Cancion cancion = new Cancion(codigo, titulo, letra, tiempo);
                 controladorCompositor.agregarCancion(cancion, codigo);
-                System.out.println(ControladorCompositor.verCompositores());
+                System.out.println(controladorCompositor.verCompositores());
                 JOptionPane.showMessageDialog(this, "Se agrego exitosamente la cancion");
                 this.limpiarCamposCancion();
             } else {
