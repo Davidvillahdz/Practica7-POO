@@ -6,6 +6,7 @@ package ec.edu.ups.practica5.vista.cancion;
 
 import ec.edu.ups.practica5.controlador.ControladorCompositor;
 import ec.edu.ups.practica5.modelo.Cancion;
+import ec.edu.ups.practica5.modelo.Compositor;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
@@ -15,8 +16,11 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class VentanaActualizarCancion extends javax.swing.JInternalFrame {
+
     private ControladorCompositor controladorCompositor;
     private ResourceBundle mensajes;
+    private Compositor compositor;
+
     /**
      * Creates new form VentanaActualizarDisco
      */
@@ -24,13 +28,15 @@ public class VentanaActualizarCancion extends javax.swing.JInternalFrame {
         initComponents();
         this.controladorCompositor = controladorCompositor;
     }
-     public void cambiarIdioma(Locale localizacion){
+
+    public void cambiarIdioma(Locale localizacion) {
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
         jLabel1.setText(mensajes.getString("txtCodigo"));
         jLabel2.setText(mensajes.getString("txtTituloAC"));
         jLabel3.setText(mensajes.getString("txtLetraAC"));
         jLabel12.setText(mensajes.getString("txtTiempoEnMinutosAC"));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,13 +51,14 @@ public class VentanaActualizarCancion extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        txtCodigo2 = new javax.swing.JTextField();
-        txtTitulo2 = new javax.swing.JTextField();
-        txtLetra2 = new javax.swing.JTextField();
-        txtTiempoEnMinutos2 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
+        txtTitulo = new javax.swing.JTextField();
+        txtTiempoEnMinutos = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textAreaLetra = new javax.swing.JTextArea();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -69,9 +76,9 @@ public class VentanaActualizarCancion extends javax.swing.JInternalFrame {
 
         jLabel12.setText("Tiempo en minutos");
 
-        txtTiempoEnMinutos2.addActionListener(new java.awt.event.ActionListener() {
+        txtTiempoEnMinutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTiempoEnMinutos2ActionPerformed(evt);
+                txtTiempoEnMinutosActionPerformed(evt);
             }
         });
 
@@ -91,60 +98,73 @@ public class VentanaActualizarCancion extends javax.swing.JInternalFrame {
             }
         });
 
+        textAreaLetra.setColumns(20);
+        textAreaLetra.setRows(5);
+        jScrollPane1.setViewportView(textAreaLetra);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 164, Short.MAX_VALUE)
+                .addComponent(btnAceptar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCancelar)
+                .addGap(245, 245, 245))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtTiempoEnMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBuscar))
+                            .addComponent(txtTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCodigo2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(txtTitulo2)
-                            .addComponent(txtLetra2)
-                            .addComponent(txtTiempoEnMinutos2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBuscar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(btnAceptar)
-                        .addGap(39, 39, 39)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtLetra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtTiempoEnMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTiempoEnMinutos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAceptar)
-                    .addComponent(btnCancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnAceptar))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,63 +181,65 @@ public class VentanaActualizarCancion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTiempoEnMinutos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTiempoEnMinutos2ActionPerformed
+    private void txtTiempoEnMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTiempoEnMinutosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTiempoEnMinutos2ActionPerformed
+    }//GEN-LAST:event_txtTiempoEnMinutosActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         try {
-        int codigo = Integer.parseInt(txtCodigo2.getText());
-        double tiempo = Double.parseDouble(txtTiempoEnMinutos2.getText());
-        String titulo = txtTitulo2.getText();
-        String letra = txtLetra2.getText();
-        Cancion cancion = new Cancion(codigo, titulo, letra, tiempo);
-        ControladorCompositor.actualizarCancion(controladorCompositor.buscarCancion(Integer.parseInt(txtCodigo2.getText())), cancion);
-        txtCodigo2.setEnabled(true);
-        txtTiempoEnMinutos2.setEnabled(false);
-        txtLetra2.setEnabled(false);
-        txtTitulo2.setEnabled(false);
-        JOptionPane.showMessageDialog(this, "Se actualizo correctamente la cancion");
+    int codigo = Integer.parseInt(txtCodigo.getText());
+    double tiempo = Double.parseDouble(txtTiempoEnMinutos.getText());
+    String titulo = txtTitulo.getText();
+    String letra = textAreaLetra.getText();
+    Cancion cancion = new Cancion(codigo, titulo, letra, tiempo);
+    Cancion cancionExistente = (Cancion) controladorCompositor.buscarCancion(codigo);
+    if (cancionExistente != null) {
+        ControladorCompositor.actualizarCancion(compositor, codigo, cancionExistente);
+        txtCodigo.setEnabled(true);
+        txtTiempoEnMinutos.setEnabled(false);
+        textAreaLetra.setEnabled(false);
+        txtTitulo.setEnabled(false);
+        JOptionPane.showMessageDialog(this, "Se actualizó correctamente la canción");
         System.out.println(controladorCompositor.verCompositores());
         this.limpiarCamposCancion();
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Error: Ingrese un valor numérico válido para el código y el tiempo");
+    } else {
+        JOptionPane.showMessageDialog(this, "La canción no existe");
     }
+} catch (NumberFormatException e) {
+    JOptionPane.showMessageDialog(this, "Error: Ingrese un valor numérico válido para el código y el tiempo");
+}
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        try {
-        if (txtCodigo2.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo del codigo no esta lleno");
+        if (txtCodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo del código no está lleno");
         } else {
-            Cancion cancion = ControladorCompositor.buscarCancion(controladorCompositor.buscarCompositor(Integer.parseInt(Integer.parseInt(txtCodigo2.getText()), txtCodigo2.getText())));
-            if (cancion != null) {
-                txtTiempoEnMinutos2.setText(String.valueOf(cancion.getTiempoEnMinutos()));
-                txtLetra2.setText(cancion.getLetra());
-                txtTitulo2.setText(cancion.getTitulo());
-                txtCodigo2.setEnabled(false);
-                txtTiempoEnMinutos2.setEnabled(true);
-                txtLetra2.setEnabled(true);
-                txtTitulo2.setEnabled(true);
-            } else {
-                this.limpiarCamposCancion();
-                JOptionPane.showMessageDialog(this, "La cancion no exite");
+            try {
+                int codigo = Integer.parseInt(txtCodigo.getText());
+                Cancion cancion = (Cancion) controladorCompositor.buscarCancion(codigo);
+                if (cancion != null) {
+                    txtTiempoEnMinutos.setText(String.valueOf(cancion.getTiempoEnMinutos()));
+                    textAreaLetra.setText(cancion.getLetra());
+                    txtTitulo.setText(cancion.getTitulo());
+                } else {
+                    this.limpiarCamposCancion();
+                    JOptionPane.showMessageDialog(this, "La canción no existe");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Error: Ingrese un valor numérico válido para el código");
             }
         }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Error: Ingrese un valor numérico válido para el ID y el código de la canción");
-    }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void limpiarCamposCancion() {
-        txtCodigo2.setText("");
-        txtTiempoEnMinutos2.setText("");
-        txtLetra2.setText("");
-        txtTitulo2.setText("");
+        txtCodigo.setText("");
+        txtTiempoEnMinutos.setText("");
+        textAreaLetra.setText("");
+        txtTitulo.setText("");
     }
 
     private boolean validacionDeCampos() {
-        if (txtCodigo2.getText().isEmpty() || txtTiempoEnMinutos2.getText().isEmpty() || txtLetra2.getText().isEmpty() || txtTitulo2.getText().isEmpty()) {
+        if (txtCodigo.getText().isEmpty() || txtTiempoEnMinutos.getText().isEmpty() || textAreaLetra.getText().isEmpty() || txtTitulo.getText().isEmpty()) {
             return false;
         }
         return true;
@@ -231,9 +253,10 @@ public class VentanaActualizarCancion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtCodigo2;
-    private javax.swing.JTextField txtLetra2;
-    private javax.swing.JTextField txtTiempoEnMinutos2;
-    private javax.swing.JTextField txtTitulo2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea textAreaLetra;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtTiempoEnMinutos;
+    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }

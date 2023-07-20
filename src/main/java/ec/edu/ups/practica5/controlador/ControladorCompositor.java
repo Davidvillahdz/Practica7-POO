@@ -18,31 +18,32 @@ public class ControladorCompositor {
 
     private Compositor compositor;
     private Cancion cancion;
-    
+    private String folderPath;
+
     private ICompositorDAO compositorDAO;
-    
+
     public ControladorCompositor(ICompositorDAO compositorDAO) {
         this.compositorDAO = compositorDAO;
     }
-    
+
     public void crearCompositor(Compositor compositor) {
         this.compositor = compositor;
         compositorDAO.create(compositor);
     }
-    
+
     public void verCompositor(int codigo) {
         compositor = compositorDAO.read(codigo);
     }
-    
+
     public void actualizarCompositor() {
         compositorDAO.update(compositor);
     }
-    
+
     public Compositor buscarCompositor(int codigo) {
         this.compositor = compositorDAO.read(codigo);
         return compositor;
     }
-    
+
     public boolean eliminarCompositor(Compositor compositor) {
         Compositor compositorEncontrado = this.buscarCompositor(compositor.getCodigo());
         if (compositorEncontrado != null) {
@@ -51,10 +52,10 @@ public class ControladorCompositor {
         }
         return false;
     }
-    
+
     public List<Compositor> verCompositores() {
         return compositorDAO.findAll();
-        
+
     }
 
     //ejemplo de agregacion
@@ -62,36 +63,40 @@ public class ControladorCompositor {
         compositor = compositorDAO.read(codigo);
         compositor.agregarCancion(cancion);
     }
-    
+
     public void agregarClienteCan(Compositor compositor, Cantante cantante) {
         compositor.agregarCliente(cantante);
     }
-    
+
     public void buscarCancion(Compositor compositor, int codigo) {
         compositor.buscarCanciones(codigo);
-        
+
     }
-    
+
     public void eliminarCancion(Compositor compositor, int codigo) {
         compositor.eliminarCancion(codigo);
     }
-    
+
     public void agregarCancion(Cancion cancion, int codigo) {
         compositor.agregarCancion(cancion);
     }
 
     public static Object buscarCancion(int codigo) {
-        
+
         return codigo;
-        
+
     }
-    
+
     public static void actualizarCancion(Compositor compositor, int codigo, Cancion cancionActualizada) {
         compositor.actualizarCancion(cancionActualizada);
     }
-    
+
     public List<Cancion> obtenerListaCanciones() {
         return compositor.listaCanciones();
     }
-    
+
+    public void eliminarCancion(Object buscarCancion, Compositor compositor, int codigo) {
+        compositor.eliminarCancion(codigo);
+    }
+
 }

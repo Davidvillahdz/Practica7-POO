@@ -159,16 +159,16 @@ public class VentanaListarCancion extends javax.swing.JInternalFrame {
     private void cargarDatosTabla() {
         DefaultTableModel modelo = (DefaultTableModel) this.tblCancion.getModel();
         modelo.setNumRows(0);
-        List<Cancion> listaCanciones = controladorCompositor.();
+        List<Cancion> listaCanciones = controladorCompositor.obtenerListaCanciones();
         for (Cancion cancion : listaCanciones) {
             int codigo = cancion.getCodigo();
             String titulo = cancion.getTitulo();
             String letra = cancion.getLetra();
-            int edad = cancion.getEdad();
-            Object[] rowData = {codigo, nombre, apellido, edad, nacionalidad, salario, numeroDeComposiciones};
+            
+            Object[] rowData = {codigo, titulo, letra};
             modelo.addRow(rowData);
         }
-        this.tblCompositor.setModel(modelo);
+        this.tblCancion.setModel(modelo);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
