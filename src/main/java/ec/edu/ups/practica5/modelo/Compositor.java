@@ -118,7 +118,6 @@ public class Compositor extends Persona {
             }
         }
         return null;
-        
     }
     public List<Cancion> listaCanciones(){
         return cancionesTop100Billboard;

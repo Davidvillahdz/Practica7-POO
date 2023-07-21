@@ -178,23 +178,24 @@ public class VentanaAgregarCancion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTiempoEnMinutosActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        Compositor compositor = new Compositor();
         if (this.validacionDeCampos()) {
             int codigo = Integer.parseInt(txtCodigo.getText());
-            if (ControladorCompositor.buscarCancion(codigo) == null) {
+            if (controladorCompositor.buscarCancion(compositor, codigo) == null) {
                 String titulo = txtTitulo.getText();
                 String letra = textAreaLetra.getText();
                 double tiempo = Double.parseDouble(txtTiempoEnMinutos.getText());
 
                 Cancion cancion = new Cancion(codigo, titulo, letra, tiempo);
-                controladorCompositor.agregarCancion(cancion, codigo);
+                controladorCompositor.agregarCancion(codigo);
                 System.out.println(controladorCompositor.verCompositores());
-                JOptionPane.showMessageDialog(this, "Se agrego exitosamente la cancion");
+                JOptionPane.showMessageDialog(this, "Se agregó exitosamente la canción");
                 this.limpiarCamposCancion();
             } else {
-                JOptionPane.showMessageDialog(this, "El Codigo de la Cancion ya existe");
+                JOptionPane.showMessageDialog(this, "El código de la canción ya existe");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "No estan llenos todos los campos");
+            JOptionPane.showMessageDialog(this, "No están llenos todos los campos");
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 

@@ -18,7 +18,6 @@ public class ControladorCompositor {
 
     private Compositor compositor;
     private Cancion cancion;
-    private String folderPath;
 
     private ICompositorDAO compositorDAO;
 
@@ -68,35 +67,19 @@ public class ControladorCompositor {
         compositor.agregarCliente(cantante);
     }
 
-    public void buscarCancion(Compositor compositor, int codigo) {
-        compositor.buscarCanciones(codigo);
+    public void actualizarCancion(Compositor compositor, Cancion cancion) {
+        compositor.actualizarCancion(cancion);
+    }
 
+    public void agregarCancion(Cancion cancion, Compositor compositor) {
+        compositor.agregarCancion(cancion);
+    }
+
+    public Cancion buscarCancion(Compositor compositor, int codigo) {
+        return compositor.buscarCanciones(codigo);
     }
 
     public void eliminarCancion(Compositor compositor, int codigo) {
         compositor.eliminarCancion(codigo);
     }
-
-    public void agregarCancion(Cancion cancion, int codigo) {
-        compositor.agregarCancion(cancion);
-    }
-
-    public static Object buscarCancion(int codigo) {
-
-        return codigo;
-
-    }
-
-    public static void actualizarCancion(Compositor compositor, int codigo, Cancion cancionActualizada) {
-        compositor.actualizarCancion(cancionActualizada);
-    }
-
-    public List<Cancion> obtenerListaCanciones() {
-        return compositor.listaCanciones();
-    }
-
-    public void eliminarCancion(Object buscarCancion, Compositor compositor, int codigo) {
-        compositor.eliminarCancion(codigo);
-    }
-
 }
