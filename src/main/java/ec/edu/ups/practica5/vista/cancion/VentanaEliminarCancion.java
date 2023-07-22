@@ -6,6 +6,7 @@ package ec.edu.ups.practica5.vista.cancion;
 
 import ec.edu.ups.practica5.controlador.ControladorCompositor;
 import ec.edu.ups.practica5.modelo.Cancion;
+import ec.edu.ups.practica5.modelo.Compositor;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
@@ -195,13 +196,23 @@ public class VentanaEliminarCancion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTiempoEnMinutosActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        int respuesta = JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas eliminar la canción?");
-        if (respuesta == JOptionPane.YES_OPTION) {
-            controladorCompositor.eliminarCancion(controladorCompositor.buscarCancion(Integer.parseInt(txtCodigo.getText())));
-            JOptionPane.showMessageDialog(this, "La canción ha sido eliminada con éxito");
-            this.limpiarCamposCancion();
+        if (txtCodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo del código no está lleno");
         } else {
-            JOptionPane.showMessageDialog(this, "La canción no ha sido eliminada");
+            try {
+                int codigo = Integer.parseInt(txtCodigo.getText());
+
+                int respuesta = JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas eliminar la canción?");
+                if (respuesta == JOptionPane.YES_OPTION) {
+                   controladorCompositor.eliminarCancion(controladorCompositor.buscarCompositor(Integer.parseInt(txtCodigo.getText())), Integer.parseInt(txtCodigo.getText()));
+                    JOptionPane.showMessageDialog(this, "La canción ha sido eliminada con éxito");
+                    this.limpiarCamposCancion();
+                } else {
+                    JOptionPane.showMessageDialog(this, "La canción no ha sido eliminada");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Error: Ingrese un valor numérico válido para el código");
+            }
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -211,12 +222,13 @@ public class VentanaEliminarCancion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        Compositor compositor = new Compositor();
         if (txtCodigo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo del código no está lleno");
         } else {
             try {
                 int codigo = Integer.parseInt(txtCodigo.getText());
-                Cancion cancion = (Cancion) controladorCompositor.buscarCancion(codigo);
+                Cancion cancion = (Cancion) controladorCompositor.buscarCancion(compositor, codigo);
                 if (cancion != null) {
                     txtTiempoEnMinutos.setText(String.valueOf(cancion.getTiempoEnMinutos()));
                     textAreaLetra.setText(cancion.getLetra());
