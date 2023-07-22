@@ -17,8 +17,10 @@ import javax.swing.table.DefaultTableModel;
  * @author Usuario
  */
 public class VentanaListarCancion extends javax.swing.JInternalFrame {
+
     private ControladorCompositor controladorCompositor;
     private ResourceBundle mensajes;
+
     /**
      * Creates new form VentanaListarCancion
      */
@@ -26,13 +28,15 @@ public class VentanaListarCancion extends javax.swing.JInternalFrame {
         initComponents();
         this.controladorCompositor = controladorCompositor;
     }
-    public void cambiarIdioma(Locale localizacion){
+
+    public void cambiarIdioma(Locale localizacion) {
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
         tblCancion.getColumnModel().getColumn(0).setHeaderValue(mensajes.getString("Codigo"));
         tblCancion.getColumnModel().getColumn(1).setHeaderValue(mensajes.getString("Titulo"));
         tblCancion.getColumnModel().getColumn(2).setHeaderValue(mensajes.getString("Letra"));
         tblCancion.getColumnModel().getColumn(3).setHeaderValue(mensajes.getString("Tiempo en minutos"));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -155,21 +159,39 @@ public class VentanaListarCancion extends javax.swing.JInternalFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setEnabled(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void cargarDatosTabla() {
+
         DefaultTableModel modelo = (DefaultTableModel) this.tblCancion.getModel();
         modelo.setNumRows(0);
-        List<Cancion> listaCanciones = controladorCompositor.obtenerListaCanciones();
-        for (Cancion cancion : listaCanciones) {
-            int codigo = cancion.getCodigo();
-            String titulo = cancion.getTitulo();
-            String letra = cancion.getLetra();
-            
-            Object[] rowData = {codigo, titulo, letra};
-            modelo.addRow(rowData);
+
+        try {
+            int codigo = Integer.parseInt(txtCodigo.getText());
+            Compositor compositor = controladorCompositor.buscarCompositor(codigo);
+
+            if (compositor != null) {
+                List<Cancion> listaCanciones = controladorCompositor.listarCanciones(compositor);
+
+                if (!listaCanciones.isEmpty()) {
+                    for (Cancion cancion : listaCanciones) {
+                        String codigoCancion = String.valueOf(cancion.getCodigo());
+                        String titulo = cancion.getTitulo();
+                        String letra = cancion.getLetra();
+                        String duracion = String.valueOf(cancion.getTiempoEnMinutos());
+                        Object[] rowData = {codigoCancion, titulo, letra, duracion};
+                        modelo.addRow(rowData);
+                    }
+                } else {
+                    System.out.println("El compositor no tiene canciones registradas.");
+                }
+            } else {
+                System.out.println("Compositor no encontrado.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error en el formato del código.");
         }
-        this.tblCancion.setModel(modelo);
     }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;

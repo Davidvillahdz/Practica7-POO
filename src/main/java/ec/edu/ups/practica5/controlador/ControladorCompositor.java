@@ -82,4 +82,9 @@ public class ControladorCompositor {
     public void eliminarCancion(Compositor compositor, int codigo) {
         compositor.eliminarCancion(codigo);
     }
+
+    public List<Cancion> listarCanciones(Compositor compositor) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

@@ -186,37 +186,39 @@ public class VentanaActualizarCancion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTiempoEnMinutosActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        Compositor compositor = new Compositor();
         try {
-    int codigo = Integer.parseInt(txtCodigo.getText());
-    double tiempo = Double.parseDouble(txtTiempoEnMinutos.getText());
-    String titulo = txtTitulo.getText();
-    String letra = textAreaLetra.getText();
-    Cancion cancion = new Cancion(codigo, titulo, letra, tiempo);
-    Cancion cancionExistente = (Cancion) controladorCompositor.buscarCancion(codigo);
-    if (cancionExistente != null) {
-        ControladorCompositor.actualizarCancion(compositor, codigo, cancionExistente);
-        txtCodigo.setEnabled(true);
-        txtTiempoEnMinutos.setEnabled(false);
-        textAreaLetra.setEnabled(false);
-        txtTitulo.setEnabled(false);
-        JOptionPane.showMessageDialog(this, "Se actualizó correctamente la canción");
-        System.out.println(controladorCompositor.verCompositores());
-        this.limpiarCamposCancion();
-    } else {
-        JOptionPane.showMessageDialog(this, "La canción no existe");
-    }
-} catch (NumberFormatException e) {
-    JOptionPane.showMessageDialog(this, "Error: Ingrese un valor numérico válido para el código y el tiempo");
-}
+            int codigo = Integer.parseInt(txtCodigo.getText());
+            double tiempo = Double.parseDouble(txtTiempoEnMinutos.getText());
+            String titulo = txtTitulo.getText();
+            String letra = textAreaLetra.getText();
+            Cancion cancion = new Cancion(codigo, titulo, letra, tiempo);
+            Cancion cancionExistente = (Cancion) controladorCompositor.buscarCancion(compositor, codigo);
+            if (cancionExistente != null) {
+
+                txtCodigo.setEnabled(true);
+                txtTiempoEnMinutos.setEnabled(false);
+                textAreaLetra.setEnabled(false);
+                txtTitulo.setEnabled(false);
+                JOptionPane.showMessageDialog(this, "Se actualizó correctamente la canción");
+                System.out.println(controladorCompositor.verCompositores());
+                this.limpiarCamposCancion();
+            } else {
+                JOptionPane.showMessageDialog(this, "La canción no existe");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Ingrese un valor numérico válido para el código y el tiempo");
+        }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
         if (txtCodigo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo del código no está lleno");
         } else {
             try {
                 int codigo = Integer.parseInt(txtCodigo.getText());
-                Cancion cancion = (Cancion) controladorCompositor.buscarCancion(codigo);
+                Cancion cancion = (Cancion) controladorCompositor.buscarCancion(compositor, codigo);
                 if (cancion != null) {
                     txtTiempoEnMinutos.setText(String.valueOf(cancion.getTiempoEnMinutos()));
                     textAreaLetra.setText(cancion.getLetra());
