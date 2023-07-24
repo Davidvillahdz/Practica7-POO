@@ -4,9 +4,8 @@
  */
 package ec.edu.ups.practica5.vista.cantante;
 
-
-import ec.edu.ups.practica5.controlador.ControladorCompositor;
-import ec.edu.ups.practica5.modelo.Compositor;
+import ec.edu.ups.practica5.controlador.ControladorCantante;
+import ec.edu.ups.practica5.modelo.Cantante;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -17,16 +16,19 @@ import javax.swing.table.DefaultTableModel;
  * @author Usuario
  */
 public class VentanaListarCantante extends javax.swing.JInternalFrame {
-    private ControladorCompositor controladorCompositor;
+
+    private ControladorCantante controladorCantante;
     private ResourceBundle mensajes;
+
     /**
      * Creates new form VentanaListarCompositor
      */
-    public VentanaListarCantante(ControladorCompositor controladorCompositor) {
+    public VentanaListarCantante(ControladorCantante controladorCantante) {
         initComponents();
-        this.controladorCompositor = controladorCompositor;
+        this.controladorCantante = controladorCantante;
     }
-    public void cambiarIdioma(Locale localizacion){
+
+    public void cambiarIdioma(Locale localizacion) {
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
         tblCantante.getColumnModel().getColumn(0).setHeaderValue(mensajes.getString("Codigo"));
         tblCantante.getColumnModel().getColumn(1).setHeaderValue(mensajes.getString("Nombre"));
@@ -40,6 +42,7 @@ public class VentanaListarCantante extends javax.swing.JInternalFrame {
         tblCantante.getColumnModel().getColumn(9).setHeaderValue(mensajes.getString("Numero de conciertos"));
         tblCantante.getColumnModel().getColumn(10).setHeaderValue(mensajes.getString("Numero de giras"));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -160,17 +163,21 @@ public class VentanaListarCantante extends javax.swing.JInternalFrame {
     private void cargarDatosTabla() {
         DefaultTableModel modelo = (DefaultTableModel) this.tblCantante.getModel();
         modelo.setNumRows(0);
-        List<Compositor> listaCompositores = controladorCompositor.verCompositores();
-        for (Compositor compositor : listaCompositores) {
-            int codigo = compositor.getCodigo();
-            String nombre = compositor.getNombre();
-            String apellido = compositor.getApellido();
-            int edad = compositor.getEdad();
-            String nacionalidad = compositor.getNacionalidad();
-            Double salario = compositor.getSalario();
-            int numeroDeComposiciones = compositor.getNumeroDeComposiciones();
-            Object[] rowData = {codigo, nombre, apellido, edad, nacionalidad, salario, numeroDeComposiciones};
-            modelo.addRow(rowData);
+        List<Cantante> listaCantantes = controladorCantante.verCantantes();
+        for (Cantante cantante : listaCantantes) {
+            int codigo = cantante.getCodigo();
+            String nombre = cantante.getNombre();
+            String apellido = cantante.getApellido();
+            int edad = cantante.getEdad();
+            String nacionalidad = cantante.getNacionalidad();
+            double salario = Math.round(cantante.calcularSalario() * 100.0) / 100.0;
+            String nombreArtistico = cantante.getNombreArtistico();
+            String genero = cantante.getGeneroMusical();
+            int numeroSencillos = cantante.getNumeroDeSencillos();
+            int numeroConciertos = cantante.getNumeroDeConciertos();
+            int numeroGiras = cantante.getNumeroDeGiras();
+            Object[] rowDate = {codigo, nombre, apellido, edad, nacionalidad, salario, nombreArtistico, genero, numeroSencillos, numeroConciertos, numeroGiras};
+            modelo.addRow(rowDate);
         }
         this.tblCantante.setModel(modelo);
     }

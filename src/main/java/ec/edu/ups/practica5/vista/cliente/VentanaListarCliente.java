@@ -8,6 +8,8 @@ import ec.edu.ups.practica5.controlador.ControladorCompositor;
 import ec.edu.ups.practica5.modelo.Compositor;
 import ec.edu.ups.practica5.vista.cantante.*;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,13 +17,26 @@ import javax.swing.table.DefaultTableModel;
  * @author Usuario
  */
 public class VentanaListarCliente extends javax.swing.JInternalFrame {
+
     private ControladorCompositor controladorCompositor;
+    private ResourceBundle mensajes;
+
     /**
      * Creates new form VentanaListarCantante
      */
     public VentanaListarCliente(ControladorCompositor controladorCompositor) {
         initComponents();
         this.controladorCompositor = controladorCompositor;
+    }
+
+    public void cambiarIdioma(Locale localizacion) {
+        mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
+        tblCompositor.getColumnModel().getColumn(0).setHeaderValue(mensajes.getString("Codigo"));
+        tblCompositor.getColumnModel().getColumn(1).setHeaderValue(mensajes.getString("Nombre"));
+        tblCompositor.getColumnModel().getColumn(2).setHeaderValue(mensajes.getString("Apellido"));
+        tblCompositor.getColumnModel().getColumn(3).setHeaderValue(mensajes.getString("Edad"));
+        tblCompositor.getColumnModel().getColumn(4).setHeaderValue(mensajes.getString("Nacionalidad"));
+        tblCompositor.getColumnModel().getColumn(5).setHeaderValue(mensajes.getString("Salario"));
     }
 
     /**
@@ -119,9 +134,10 @@ public class VentanaListarCliente extends javax.swing.JInternalFrame {
         this.setEnabled(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {                                            
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
         this.cargarDatosTabla();
-    } 
+    }
+
     private void cargarDatosTabla() {
         DefaultTableModel modelo = (DefaultTableModel) this.tblCompositor.getModel();
         modelo.setNumRows(0);

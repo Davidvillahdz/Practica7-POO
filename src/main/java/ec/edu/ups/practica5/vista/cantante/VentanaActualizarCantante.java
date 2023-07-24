@@ -7,6 +7,8 @@ package ec.edu.ups.practica5.vista.cantante;
 import ec.edu.ups.practica5.controlador.ControladorCantante;
 import ec.edu.ups.practica5.modelo.Cantante;
 import ec.edu.ups.practica5.modelo.Compositor;
+import ec.edu.ups.practica5.modelo.Disco;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
@@ -16,16 +18,21 @@ import javax.swing.JOptionPane;
  * @author HP
  */
 public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
+
     private ControladorCantante controladorCantante;
+    private List<Disco> listaDiscos;
     private ResourceBundle mensajes;
+
     /**
+     * /**
      * Creates new form VentanaActualizarCantante
      */
     public VentanaActualizarCantante(ControladorCantante controladorCantante) {
         initComponents();
-        
+
     }
-    public void cambiarIdioma(Locale localizacion){
+
+    public void cambiarIdioma(Locale localizacion) {
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
         jlCodigo.setText(mensajes.getString("txtCodigo"));
         jlNombre.setText(mensajes.getString("txtNombre"));
@@ -50,7 +57,7 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnAceptar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jlCodigo = new javax.swing.JLabel();
         jlNombre = new javax.swing.JLabel();
@@ -90,10 +97,10 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Actualizar Cantante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(153, 153, 153));
 
-        btnAceptar.setText("Aceptar");
-        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAceptarActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
 
@@ -219,7 +226,7 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAceptar)
+                        .addComponent(btnActualizar)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -325,7 +332,7 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
                     .addComponent(txtGirasC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAceptar)
+                    .addComponent(btnActualizar)
                     .addComponent(btnCancelar))
                 .addContainerGap())
         );
@@ -345,7 +352,10 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        txtCodigoC.setText("");
+        this.setVisible(false);
+        btnActualizar.setEnabled(false);
+        this.limpiarCampos();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtCodigoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoCActionPerformed
@@ -403,7 +413,7 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         try {
             int codigo = 0;
             if (!txtCodigoC.getText().isEmpty()) {
@@ -421,6 +431,7 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
             } else {
                 throw new IllegalArgumentException("El campo Edad no puede estar vacío.");
             }
+
             String nacionalidad = cbxnacionalidadC.getSelectedItem().toString();
 
             double salario = 0.0;
@@ -432,49 +443,43 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
 
             String nombreArtistico = txtNombreArtisticoC.getText();
             String generoMusical = radioButtonRock.getText();
-            
-            int NúmeroDeSencillos = 0;
+
+            int numeroDeSencillos = 0;
             if (!txtSencillosC.getText().isEmpty()) {
-                NúmeroDeSencillos = Integer.parseInt(txtSencillosC.getText());
+                numeroDeSencillos = Integer.parseInt(txtSencillosC.getText());
             } else {
-                throw new IllegalArgumentException("El campo Número de Composiciones no puede estar vacío.");
+                throw new IllegalArgumentException("El campo Número de Sencillos no puede estar vacío.");
             }
 
-            int NúmeroDeconciertos = 0;
+            int numeroDeConciertos = 0;
             if (!txtConciertosC.getText().isEmpty()) {
-                NúmeroDeconciertos = Integer.parseInt(txtConciertosC.getText());
+                numeroDeConciertos = Integer.parseInt(txtConciertosC.getText());
             } else {
-                throw new IllegalArgumentException("El campo Número de Concierots no puede estar vacío.");
+                throw new IllegalArgumentException("El campo Número de Conciertos no puede estar vacío.");
             }
-            int NúmeroDegiras = 0;
+
+            int numeroDeGiras = 0;
             if (!txtGirasC.getText().isEmpty()) {
-                NúmeroDegiras = Integer.parseInt(txtGirasC.getText());
+                numeroDeGiras = Integer.parseInt(txtGirasC.getText());
             } else {
-                throw new IllegalArgumentException("El campo Número de Composiciones no puede estar vacío.");
+                throw new IllegalArgumentException("El campo Número de Giras no puede estar vacío.");
             }
-            Cantante cantante = new Cantante();
-            cantante.setCodigo(codigo);
-            cantante.setNombre(nombre);
-            cantante.setApellido(apellido);
-            cantante.setEdad(edad);
-            cantante.setNacionalidad(nacionalidad);
-            cantante.setSalario(salario);
-            cantante.setNombreArtistico(nombreArtistico);
-            cantante.setGeneroMusical(nacionalidad);
-            cantante.setNumeroDeSencillos(NúmeroDeSencillos);
-            cantante.setNumeroDeGiras(NúmeroDegiras);
-            cantante.setNumeroDeConciertos(NúmeroDeconciertos);
 
-            controladorCantante.crearCantante(cantante);
-
-            JOptionPane.showMessageDialog(this, "Compositor agregado exitosamente.");
-            limpiarCampos();
+            if (nombre.length() > 25 || apellido.length() > 25 || nacionalidad.length() > 25) {
+                JOptionPane.showMessageDialog(this, "El nombre, apellido o nacionalidad es muy largo, debe ser menor a 25 caracteres.");
+            } else {
+                Cantante cantante = new Cantante(nombreArtistico, generoMusical, numeroDeSencillos, numeroDeConciertos, numeroDeGiras, codigo, nombre, apellido, edad, nacionalidad, salario);
+                String ruta = null;
+                controladorCantante.crearCantante(cantante, ruta);
+                JOptionPane.showMessageDialog(this, "Compositor agregado exitosamente.");
+                limpiarCampos();
+            }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Error: uno o más campos no son numéricos.");
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_btnAceptarActionPerformed
+    }//GEN-LAST:event_btnActualizarActionPerformed
     public void limpiarCampos() {
         this.txtCodigoC.setText("");
         this.txtNombreArtisticoC.setText("");
@@ -486,8 +491,9 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
         this.txtConciertosC.setText("");
         this.txtGirasC.setText("");
         this.radioButtonRock.setSelected(true);
- }
-    private void cambiarEstadoCampos(boolean estado){
+    }
+
+    private void cambiarEstadoCampos(boolean estado) {
         this.txtCodigoC.setEnabled(!estado);
         this.txtNombreArtisticoC.setEnabled(estado);
         this.txtApellidoC.setEnabled(estado);
@@ -498,7 +504,7 @@ public class VentanaActualizarCantante extends javax.swing.JInternalFrame {
         this.txtSencillosC.setEnabled(estado);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cbxnacionalidadC;

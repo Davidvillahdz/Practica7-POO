@@ -16,8 +16,10 @@ import javax.swing.JOptionPane;
  * @author HP
  */
 public class VentanaAgregarCantante extends javax.swing.JInternalFrame {
+
     private ResourceBundle mensajes;
     private ControladorCantante controladorCantante;
+
     /**
      * Creates new form VentanaAgregarCantante
      */
@@ -25,7 +27,8 @@ public class VentanaAgregarCantante extends javax.swing.JInternalFrame {
         initComponents();
         this.controladorCantante = controladorCantante;
     }
-    public void cambiarIdioma(Locale localizacion){
+
+    public void cambiarIdioma(Locale localizacion) {
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
         jlCodigo.setText(mensajes.getString("txtCodigo"));
         jlNombre.setText(mensajes.getString("txtNombre"));
@@ -39,6 +42,7 @@ public class VentanaAgregarCantante extends javax.swing.JInternalFrame {
         jlSalario4.setText(mensajes.getString("txtConciertosC"));
         jlSalario5.setText(mensajes.getString("txtGirasC"));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -357,34 +361,55 @@ public class VentanaAgregarCantante extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
-        int codigo = Integer.parseInt(txtCodigo.getText());
+        if (isValidInput()) {
+            Cantante cantante = createCantanteParaElInput();
+            if (controladorCantante.buscarCantante(cantante.getCodigo()) == null) {
+                String ruta = null;
+                controladorCantante.registroCliente(cantante, ruta);
+                borrarCamposDeEntrada();
+                mostrarMensajeDeÉxito();
+            } else {
+                errorDeVisualizaciónDeIDYaExistente();
+            }
+        } else {
+            mostrarErrorDeEntrada();
+        }
+    }
+
+    private boolean isValidInput() {
+        // Comprueba que todos los campos obligatorios están rellenados correctamente
+        return validarCampos();
+    }
+
+    private Cantante createCantanteParaElInput() {
+        // Crear un nuevo objeto Cantante con la información proporcionada en los campos de texto
+        int id = Integer.parseInt(txtCodigo.getText());
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         int edad = Integer.parseInt(txtEdad.getText());
-        JComboBox<String> nacionalidad = cbxNacionalidad;
+        String nacionalidad = cbxNacionalidad.getSelectedItem().toString();
         double salario = Double.parseDouble(txtSalario.getText());
         String nombreArtistico = txtNombreArtisticoC.getText();
-        int numeroDeSencillos = Integer.parseInt(txtSencillosC.getText());
-        int numeroDeConciertos = Integer.parseInt(txtConciertosC.getText());
-        int numeroDeGiras = Integer.parseInt(txtGirasC.getText());
+        String genero = radioButtonRock.getText();
+        int numeroSencillos = Integer.parseInt(txtSencillosC.getText());
+        int numeroConciertos = Integer.parseInt(txtConciertosC.getText());
+        int numeroGiras = Integer.parseInt(txtGirasC.getText());
+        return new Cantante(llenarEspacio(nombreArtistico), llenarEspacio(genero), numeroSencillos, numeroConciertos, numeroGiras, id, llenarEspacio(nombre), llenarEspacio(apellido), edad, llenarEspacio(nacionalidad), salario);
+    }
 
-        Cantante cantante = new Cantante();
+    private void mostrarMensajeDeÉxito() {
+        // Muestra un mensaje de éxito al usuario
+        JOptionPane.showMessageDialog(this, mensajes.getString("joption.secreocantante"));
+    }
 
-        cantante.setCodigo(codigo);
-        cantante.setNombre(nombre);
-        cantante.setApellido(apellido);
-        cantante.setEdad(edad);
-        cantante.setSalario(salario);
-        cantante.setNombreArtistico(nombreArtistico);
-        cantante.setNumeroDeSencillos(numeroDeSencillos);
-        cantante.setNumeroDeConciertos(numeroDeConciertos);
-        cantante.setNumeroDeGiras(numeroDeGiras);
+    private void errorDeVisualizaciónDeIDYaExistente() {
+        // Muestra un mensaje de error al usuario si el id ya existe
+        JOptionPane.showMessageDialog(this, mensajes.getString("joption.elid"));
+    }
 
-        controladorCantante.crearCantante(cantante);
-
-        JOptionPane.showMessageDialog(this, "Cantante agregado exitosamente.");
-        limpiarCampos();
+    private void mostrarErrorDeEntrada() {
+        // Muestra un mensaje de error al usuario si la entrada no es válida
+        JOptionPane.showMessageDialog(this, mensajes.getString("joption.nosehanllenado"));
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -429,13 +454,15 @@ public class VentanaAgregarCantante extends javax.swing.JInternalFrame {
         this.txtApellido.setText("");
         this.txtEdad.setText("");
         this.txtSalario.setText("");
+        this.cbxNacionalidad.setSelectedIndex(0);
         this.txtNombreArtisticoC.setText("");
         this.txtSencillosC.setText("");
         this.txtConciertosC.setText("");
         this.txtGirasC.setText("");
         this.radioButtonRock.setSelected(true);
- }
-    private void cambiarEstadoCampos(boolean estado){
+    }
+
+    private void cambiarEstadoCampos(boolean estado) {
         this.txtCodigo.setEnabled(!estado);
         this.txtNombre.setEnabled(estado);
         this.txtApellido.setEnabled(estado);
@@ -444,8 +471,78 @@ public class VentanaAgregarCantante extends javax.swing.JInternalFrame {
         this.txtSalario.setEnabled(estado);
         this.radioButtonRock.setEnabled(estado);
         this.txtSencillosC.setEnabled(estado);
-        
-        
+    }
+
+    private String llenarEspacio(String palabra) {
+        StringBuilder nueva = new StringBuilder(palabra);
+        for (int i = palabra.length(); i < 25; i++) {
+            nueva.append(" ");
+        }
+        System.out.println("Espacio del caracter :" + nueva.length());
+        return nueva.toString();
+        //f
+    }
+
+    private boolean validarCampos() {
+        if (txtCodigo.getText().isEmpty() || txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtEdad.getText().isEmpty() || ((String) cbxNacionalidad.getSelectedItem()).isEmpty()
+                || txtSalario.getText().isEmpty() || txtNombreArtisticoC.getText().isEmpty() || txtSencillosC.getText().isEmpty()
+                || txtConciertosC.getText().isEmpty() || txtGirasC.getText().isEmpty()) {
+            return false;
+        }
+        try {
+            int codigo = Integer.parseInt(txtCodigo.getText());
+            int edad = Integer.parseInt(txtEdad.getText());
+            double salario = Double.parseDouble(txtSalario.getText());
+
+            int numeroSencillos = Integer.parseInt(txtSencillosC.getText());
+            int numeroConciertos = Integer.parseInt(txtConciertosC.getText());
+            int numeroGiras = Integer.parseInt(txtGirasC.getText());
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    private void borrarCamposDeEntrada() {
+        // Clear the text fields
+        txtCodigo.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtEdad.setText("");
+        cbxNacionalidad.setSelectedIndex(0);
+        txtSalario.setText("");
+        txtNombreArtisticoC.setText("");
+        radioButtonRock.setText("");
+        txtSencillosC.setText("");
+        txtConciertosC.setText("");
+        txtGirasC.setText("");
+    }
+
+    private void mostrarErrordeEntrada() {
+        // Display an error message to the user if the input is invalid
+        if (txtCodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo ID es obligatorio.");
+        } else if (txtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Nombre es obligatorio.");
+        } else if (txtApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Apellido es obligatorio.");
+        } else if (txtEdad.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Edad es obligatorio.");
+        } else if (((String) cbxNacionalidad.getSelectedItem()).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Nacionalidad es obligatorio.");
+        } else if (txtSalario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Salario es obligatorio.");
+        } else if (txtNombreArtisticoC.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Nombre Artístico es obligatorio.");
+        } else if (txtSencillosC.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Número de Sencillos es obligatorio.");
+        } else if (txtConciertosC.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Número de Conciertos es obligatorio.");
+        } else if (txtGirasC.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Número de Giras es obligatorio.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese números válidos en los campos numéricos.");
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;

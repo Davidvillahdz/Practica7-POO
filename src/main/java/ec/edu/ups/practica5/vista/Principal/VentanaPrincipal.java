@@ -131,10 +131,46 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             ventanaBuscarCantante.cambiarIdioma(localizacion);
         }
         if (ventanaEliminarCantante != null) {
+            ventanaAgregarCantante.cambiarIdioma(localizacion);
+        }
+        if (ventanaActualizarCantante != null) {
+            ventanaActualizarCantante.cambiarIdioma(localizacion);
+        }
+        if (ventanaBuscarCantante != null) {
+            ventanaBuscarCantante.cambiarIdioma(localizacion);
+        }
+        if (ventanaEliminarCantante != null) {
             ventanaEliminarCantante.cambiarIdioma(localizacion);
         }
         if (ventanaListarCantante != null) {
             ventanaListarCantante.cambiarIdioma(localizacion);
+        }
+        if (ventanaActualizarDisco != null) {
+            ventanaActualizarDisco.cambiarIdioma(localizacion);
+        }
+        if (ventanaAgregarDisco != null) {
+            ventanaAgregarDisco.cambiarIdioma(localizacion);
+        }
+        if (ventanaBuscarDisco != null) {
+            ventanaBuscarDisco.cambiarIdioma(localizacion);
+        }
+        if (ventanaEliminarDisco != null) {
+            ventanaEliminarDisco.cambiarIdioma(localizacion);
+        }
+        if (ventanaActualizarCliente != null) {
+            ventanaActualizarCliente.cambiarIdioma(localizacion);
+        }
+        if (ventanaAgregarCliente != null) {
+            ventanaAgregarCliente.cambiarIdioma(localizacion);
+        }
+        if (ventanaBuscarCliente != null) {
+            ventanaBuscarCliente.cambiarIdioma(localizacion);
+        }
+        if (ventanaEliminarCliente != null) {
+            ventanaEliminarCliente.cambiarIdioma(localizacion);
+        }
+        if (ventanaListarCliente != null) {
+            ventanaListarCliente.cambiarIdioma(localizacion);
         }
     }
     @SuppressWarnings("unchecked")

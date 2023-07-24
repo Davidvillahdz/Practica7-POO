@@ -16,8 +16,10 @@ import javax.swing.JOptionPane;
  * @author HP
  */
 public class VentanaEliminarCantante extends javax.swing.JInternalFrame {
+
     private ControladorCantante controladorCantante;
     private ResourceBundle mensajes;
+
     /**
      * Creates new form VentanaEliminarCantante
      */
@@ -25,7 +27,8 @@ public class VentanaEliminarCantante extends javax.swing.JInternalFrame {
         initComponents();
         this.controladorCantante = controladorCantante;
     }
-    public void cambiarIdioma(Locale localizacion){
+
+    public void cambiarIdioma(Locale localizacion) {
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
         jlCodigo.setText(mensajes.getString("txtCodigo"));
         jlNombre.setText(mensajes.getString("txtNombre"));
@@ -39,6 +42,7 @@ public class VentanaEliminarCantante extends javax.swing.JInternalFrame {
         jlSalario4.setText(mensajes.getString("txtConciertosC"));
         jlSalario5.setText(mensajes.getString("txtGirasC"));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -388,35 +392,46 @@ public class VentanaEliminarCantante extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtGirasCActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        int codigo = Integer.parseInt(txtCodigo.getText());
-        Cantante cantante = controladorCantante.buscarCantante(codigo);
-        if (cantante != null) {
-            txtNombre.setText(cantante.getNombre());
-            txtApellido.setText(cantante.getApellido());
-            txtEdad.setText(Integer.toString(cantante.getEdad()));
-            cbxNacionalidad.setSelectedItem(cantante.getNacionalidad());
-            txtSalario.setText(Double.toString(cantante.getSalario()));
-            txtNombreArtisticoC.setText(cantante.getNombreArtistico());
-            radioButtonRock.setText(cantante.getGeneroMusical());
-            txtSencillosC.setText(Integer.toString(cantante.getNumeroDeSencillos()));
-            txtConciertosC.setText(Integer.toString(cantante.getNumeroDeConciertos()));
-            txtGirasC.setText(Integer.toString(cantante.getNumeroDeGiras()));
+        if (txtCodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, mensajes.getString("joption.noestalleno"));
         } else {
-            JOptionPane.showMessageDialog(this, "El cantante con codigo " + codigo + " no ha sido encontrada!");
+            try {
+                int codigo = Integer.parseInt(txtCodigo.getText());
+                Cantante cantanteDembo = controladorCantante.buscarCantante(codigo);
+
+                if (cantanteDembo != null) {
+                    txtNombre.setText(cantanteDembo.getNombre());
+                    txtApellido.setText(cantanteDembo.getApellido());
+                    txtEdad.setText(String.valueOf(cantanteDembo.getEdad()));
+                    cbxNacionalidad.setSelectedItem((String) cantanteDembo.getNacionalidad());
+                    txtSalario.setText(String.valueOf(cantanteDembo.calcularSalario()));
+                    txtNombreArtisticoC.setText(cantanteDembo.getNombreArtistico());
+                    radioButtonRock.setText(cantanteDembo.getGeneroMusical());
+                    txtSencillosC.setText(String.valueOf(cantanteDembo.getNumeroDeSencillos()));
+                    txtConciertosC.setText(String.valueOf(cantanteDembo.getNumeroDeConciertos()));
+                    txtGirasC.setText(String.valueOf(cantanteDembo.getNumeroDeGiras()));
+                } else {
+                    this.limpiarCampos();
+                    JOptionPane.showMessageDialog(this, "No se encontró un cantante con el ID especificado");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Ingrese un número válido para el ID");
+            }
         }
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         int codigo = Integer.parseInt(txtCodigo.getText());
         Cantante cantante = controladorCantante.buscarCantante(codigo);
         if (cantante != null) {
-            int respuesta = JOptionPane.showConfirmDialog(this, "¿Estas seguro que deseas eliminar al compositor: " + cantante.getNombre() + " " + cantante.getApellido() + "?");
+            int respuesta = JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas eliminar al cantante: " + cantante.getNombre() + " " + cantante.getApellido() + "?");
             if (respuesta == JOptionPane.YES_OPTION) {
-                if (controladorCantante.eliminarCantante(cantante)) {
-                    JOptionPane.showMessageDialog(this, "El compositor ha sido eliminado");
+                if (controladorCantante.eliminarCantante(codigo)) {
+                    JOptionPane.showMessageDialog(this, "El cantante ha sido eliminado");
                     txtCodigo.setText("");
                 } else {
-                    JOptionPane.showMessageDialog(this, "El compositor no ha sido eliminado");
+                    JOptionPane.showMessageDialog(this, "El cantante no ha sido eliminado");
                 }
             }
         }
@@ -433,8 +448,9 @@ public class VentanaEliminarCantante extends javax.swing.JInternalFrame {
         this.txtConciertosC.setText("");
         this.txtGirasC.setText("");
         this.radioButtonRock.setSelected(true);
- }
-    private void cambiarEstadoCampos(boolean estado){
+    }
+
+    private void cambiarEstadoCampos(boolean estado) {
         this.txtCodigo.setEnabled(!estado);
         this.txtNombre.setEnabled(estado);
         this.txtApellido.setEnabled(estado);
@@ -443,8 +459,7 @@ public class VentanaEliminarCantante extends javax.swing.JInternalFrame {
         this.txtSalario.setEnabled(estado);
         this.radioButtonRock.setEnabled(estado);
         this.txtSencillosC.setEnabled(estado);
-        
-        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;

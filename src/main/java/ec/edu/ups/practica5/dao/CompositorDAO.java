@@ -28,7 +28,7 @@ public class CompositorDAO implements ICompositorDAO {
 
     //private List<Compositor> compositores;
     public CompositorDAO() {
-        this.ruta = "C:\\Users\\Usuario\\OneDrive\\Documents\\Practica7\\Archivo7.txt";
+        this.ruta = "C:\\Users\\Usuario\\Downloads\\Practica5-Diaz-Edisson-Villa-David (2)\\Practica7-Diaz-Edisson-Villa-David\\src\\main\\resources\\Archivito\\Compositor.dat";
     }
 
     @Override

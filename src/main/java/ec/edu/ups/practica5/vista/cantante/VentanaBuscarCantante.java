@@ -16,8 +16,10 @@ import javax.swing.JOptionPane;
  * @author HP
  */
 public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
+
     private ControladorCantante controladorCantante;
     private ResourceBundle mensajes;
+
     /**
      * Creates new form VentanaBuscarCantante
      */
@@ -25,7 +27,8 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
         initComponents();
         this.controladorCantante = controladorCantante;
     }
-    public void cambiarIdioma(Locale localizacion){
+
+    public void cambiarIdioma(Locale localizacion) {
         mensajes = ResourceBundle.getBundle("mensajes.mensaje", localizacion);
         jlCodigo.setText(mensajes.getString("txtCodigo"));
         jlNombre.setText(mensajes.getString("txtNombre"));
@@ -39,6 +42,7 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
         jlSalario4.setText(mensajes.getString("txtConciertosC"));
         jlSalario5.setText(mensajes.getString("txtGirasC"));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -107,6 +111,11 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
         jPanel4.setForeground(new java.awt.Color(153, 153, 153));
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -411,37 +420,41 @@ public class VentanaBuscarCantante extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtGirasCActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        int codigo = Integer.parseInt(txtCodigo.getText());
-        Cantante cantante = controladorCantante.buscarCantante(codigo);
-        if (cantante != null) {
-            txtNombre.setText(cantante.getNombre());
-            String nombre = txtNombre.getText();
-            txtApellido.setText(cantante.getApellido());
-            String edad  = txtEdad.getText();
-            txtEdad.setText(Integer.toString(cantante.getEdad()));
-            String apellido = txtApellido.getText();
-            cbxnacionalidad.setSelectedItem(cantante.getNacionalidad());
-            String nacionalidad = cbxnacionalidad.getSelectedItem().toString();
-            txtSalario.setText(Double.toString(cantante.getSalario()));
-            String salario = txtSalario.getText();
-            txtNombreArtisticoC.setText(cantante.getNombreArtistico());
-            String nombreArtistico = txtNombreArtisticoC.getText();
-            radioButtonRock.setText(cantante.getGeneroMusical());
-            String generoMusical = radioButtonRock.getText();
-            txtSencillosC.setText(Integer.toString(cantante.getNumeroDeSencillos()));
-            String sencillos = txtSencillosC.getText();
-            txtConciertosC.setText(Integer.toString(cantante.getNumeroDeConciertos()));
-            String conciertos = txtConciertosC.getText();
-            txtGirasC.setText(Integer.toString(cantante.getNumeroDeGiras()));
-            String numeroDeGiras = txtGirasC.getText();
+        if (txtCodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, mensajes.getString("joption.noestalleno"));
         } else {
-            JOptionPane.showMessageDialog(this, "La persona con codigo " + codigo + " no ha sido encontrada!");
+            try {
+                int codigo = Integer.parseInt(txtCodigo.getText());
+                Cantante cantanteDembo = controladorCantante.buscarCantante(codigo);
+
+                if (cantanteDembo != null) {
+                    txtNombre.setText(cantanteDembo.getNombre());
+                    txtApellido.setText(cantanteDembo.getApellido());
+                    txtEdad.setText(String.valueOf(cantanteDembo.getEdad()));
+                    cbxnacionalidad.setSelectedItem((String) cantanteDembo.getNacionalidad());
+                    txtSalario.setText(String.valueOf(cantanteDembo.calcularSalario()));
+                    txtNombreArtisticoC.setText(cantanteDembo.getNombreArtistico());
+                    radioButtonRock.setText(cantanteDembo.getGeneroMusical());
+                    txtSencillosC.setText(String.valueOf(cantanteDembo.getNumeroDeSencillos()));
+                    txtConciertosC.setText(String.valueOf(cantanteDembo.getNumeroDeConciertos()));
+                    txtGirasC.setText(String.valueOf(cantanteDembo.getNumeroDeGiras()));
+                } else {
+                    this.limpiarCampos();
+                    JOptionPane.showMessageDialog(this, "No se encontró un cantante con el ID especificado");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Ingrese un número válido para el ID");
+            }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         this.limpiarCampos();
     }//GEN-LAST:event_formInternalFrameClosing
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     public void limpiarCampos() {
         this.txtCodigo.setText("");

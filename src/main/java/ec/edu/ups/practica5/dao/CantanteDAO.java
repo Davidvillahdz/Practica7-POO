@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +26,8 @@ public class CantanteDAO implements ICantanteDAO {
 
     private String ruta;
 
-    public CantanteDAO(String folderPath) {
-        this.ruta = "C:\\Users\\HP\\Documents\\Archivito.txt";
+    public CantanteDAO() {
+        this.ruta = "C:\\Users\\HP\\Documents\\NetBeansProjects\\Practica7-POO\\src\\main\\resources\\Archivito";
     }
 
     public void create(Cantante cantante, String ruta) {
@@ -49,7 +50,7 @@ public class CantanteDAO implements ICantanteDAO {
                 archivoEscritura.writeUTF(disco.getNombre());
                 archivoEscritura.writeInt(disco.getAnioDelanzamiento());
             }
-              archivoEscritura.close();
+            archivoEscritura.close();
         } catch (FileNotFoundException e1) {
             System.out.println("Ruta del folder no encontrada");
         } catch (IOException e2) {
@@ -59,7 +60,7 @@ public class CantanteDAO implements ICantanteDAO {
         }
     }
 
-    public Cantante read(int codigo, String ruta) {
+    public Cantante read(int codigo) {
         try (RandomAccessFile archivoLecturaDAO = new RandomAccessFile(ruta, "r")) {
             int bytesPorCantante = 365;
 
@@ -127,34 +128,96 @@ public class CantanteDAO implements ICantanteDAO {
                     return;
                 }
             }
-        } catch (IOException e) {
-            System.out.println("Error al actualizar el cantante");
+        } catch (FileNotFoundException e1) {
+            System.out.println("Ruta del folder no encontrado " + e1);
+        } catch (IOException e2) {
+            System.out.println("Error de lectura de la ruta " + e2 + e2.getMessage());
+        } catch (Exception e3) {
+            System.out.println("Eror General " + e3);
         }
     }
 
     public void delete(Cantante cantante) {
-        String filePath = folderPath + File.separator + cantante.getCodigo() + ".dat";
-        File file = new File(filePath);
-        if (file.exists()) {
-            file.delete();
+        boolean found = false;
+        int bytesPorCantante = 363;
+
+        try (RandomAccessFile archivito = new RandomAccessFile(ruta, "rw")) {
+            long numCantantes = archivito.length() / bytesPorCantante;
+
+            for (int i = 0; i < numCantantes; i++) {
+                archivito.seek(i * bytesPorCantante);
+                int codigoCantante = archivito.readInt();
+
+                if (codigoCantante == cantante.getCodigo()) {
+                    long posicionActual = i * bytesPorCantante;
+                    long posicionSiguiente = (i + 1) * bytesPorCantante;
+                    long bytesRestantes = archivito.length() - posicionSiguiente;
+
+                    byte[] buffer = new byte[(int) bytesRestantes];
+                    archivito.read(buffer);
+
+                    archivito.seek(posicionActual);
+                    archivito.write(buffer);
+                    archivito.setLength(archivito.length() - bytesPorCantante);
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                System.out.println("No existe el código");
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Ruta no encontrada");
+        } catch (IOException e1) {
+            System.out.println("Error de Lectura/Escritura");
+        } catch (Exception e) {
+            System.out.println("Error General");
         }
     }
 
-    private void saveDataToFile(String filePath, Cantante cantante) {
-        try (FileOutputStream fos = new FileOutputStream(filePath); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(cantante);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    public List<Cantante> findAll() {
+        List<Cantante> listaCantantes = new ArrayList<>();
+        int bytesPorCantante = 363;
 
-    private Cantante readDataFromFile(String filePath) {
-        Cantante cantante = null;
-        try (FileInputStream fis = new FileInputStream(filePath); ObjectInputStream ois = new ObjectInputStream(fis)) {
-            cantante = (Cantante) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        try (RandomAccessFile archivoLectura = new RandomAccessFile(ruta, "r")) {
+            long numCantantes = archivoLectura.length() / bytesPorCantante;
+
+            for (int i = 0; i < numCantantes; i++) {
+                archivoLectura.seek(i * bytesPorCantante);
+                int codigo = archivoLectura.readInt();
+                String nombre = archivoLectura.readUTF();
+                String apellido = archivoLectura.readUTF();
+                int edad = archivoLectura.readInt();
+                String nacionalidad = archivoLectura.readUTF();
+                String nombreArtistico = archivoLectura.readUTF();
+                String generoMusical = archivoLectura.readUTF();
+                int numeroDeSencillos = archivoLectura.readInt();
+                int numeroDeConciertos = archivoLectura.readInt();
+                int numeroDeGiras = archivoLectura.readInt();
+                double salario = archivoLectura.readDouble();
+                Cantante cantante = new Cantante(nombreArtistico, generoMusical, numeroDeSencillos, numeroDeConciertos, numeroDeGiras, codigo, nombre, apellido, edad, nacionalidad, salario);
+
+                int numDiscos = archivoLectura.readInt();
+                for (int j = 0; j < numDiscos; j++) {
+                    int codigoCan = archivoLectura.readInt();
+                    String nombreCAn = archivoLectura.readUTF();
+                    int anio = archivoLectura.readInt();
+                    Disco dis = new Disco(codigoCan, nombreCAn, anio);
+                    cantante.agregarDisco(dis);
+                }
+
+                listaCantantes.add(cantante);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Ruta no encontrada");
+        } catch (IOException e1) {
+            System.out.println("Error de Lectura");
+        } catch (Exception e) {
+            System.out.println("Error General");
         }
-        return cantante;
+
+        return listaCantantes;
     }
 }

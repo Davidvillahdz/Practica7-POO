@@ -15,7 +15,7 @@ import java.util.List;
 public interface ICantanteDAO {
 
     //Métodos CRUD
-    public void create(Cantante cantante);
+     public void create(Cantante cantante, String ruta);
 
     public Cantante read(int codigo);
 
@@ -23,5 +23,5 @@ public interface ICantanteDAO {
 
     public void delete(Cantante cantante);
 
-
+    public List<Cantante> findAll();
 }

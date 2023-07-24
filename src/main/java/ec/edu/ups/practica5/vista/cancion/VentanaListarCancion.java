@@ -20,6 +20,7 @@ public class VentanaListarCancion extends javax.swing.JInternalFrame {
 
     private ControladorCompositor controladorCompositor;
     private ResourceBundle mensajes;
+    private Compositor CompositorCa;
 
     /**
      * Creates new form VentanaListarCancion
@@ -160,35 +161,18 @@ public class VentanaListarCancion extends javax.swing.JInternalFrame {
         this.setEnabled(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
     private void cargarDatosTabla() {
-
         DefaultTableModel modelo = (DefaultTableModel) this.tblCancion.getModel();
         modelo.setNumRows(0);
-
-        try {
-            int codigo = Integer.parseInt(txtCodigo.getText());
-            Compositor compositor = controladorCompositor.buscarCompositor(codigo);
-
-            if (compositor != null) {
-                List<Cancion> listaCanciones = controladorCompositor.listarCanciones(compositor);
-
-                if (!listaCanciones.isEmpty()) {
-                    for (Cancion cancion : listaCanciones) {
-                        String codigoCancion = String.valueOf(cancion.getCodigo());
-                        String titulo = cancion.getTitulo();
-                        String letra = cancion.getLetra();
-                        String duracion = String.valueOf(cancion.getTiempoEnMinutos());
-                        Object[] rowData = {codigoCancion, titulo, letra, duracion};
-                        modelo.addRow(rowData);
-                    }
-                } else {
-                    System.out.println("El compositor no tiene canciones registradas.");
-                }
-            } else {
-                System.out.println("Compositor no encontrado.");
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Error en el formato del código.");
+        List<Cancion> listaCancion = CompositorCa.getCancionesTop100Billboard();
+        for (Cancion cancion : listaCancion) {
+            int codigo = cancion.getCodigo();
+            String titulo = cancion.getTitulo();
+            String letra = cancion.getLetra();
+            double tiempoEnMinutos = cancion.getTiempoEnMinutos();
+            Object[] rowData = {codigo, titulo, letra, tiempoEnMinutos};
+            modelo.addRow(rowData);
         }
+        this.tblCancion.setModel(modelo);
     }
 
 
